@@ -1,0 +1,27 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-CqcOtt8U.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DjGgkvuM.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "assets/app-Cht0RTYT.css"
+    ],
+    "assets": [
+      "assets/logo_5-C4Y6xtqj.png",
+      "assets/dashboard2-BAV-KsRC.png"
+    ]
+  },
+  "resources/js/components/assets/dashboard2.png": {
+    "file": "assets/dashboard2-BAV-KsRC.png",
+    "src": "resources/js/components/assets/dashboard2.png"
+  },
+  "resources/js/components/assets/logo_5.png": {
+    "file": "assets/logo_5-C4Y6xtqj.png",
+    "src": "resources/js/components/assets/logo_5.png"
+  }
+}
