@@ -4,6 +4,8 @@ import 'aos/dist/aos.css';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useTypewriter } from 'react-simple-typewriter';
+import CryptoJS from 'crypto-js';
+
 // import emailjs from '@emailjs/browser';
 
 const Hero = () => {
@@ -62,6 +64,8 @@ const Hero = () => {
             setErrors((prevErrors) => ({ ...prevErrors, agreeTerms: 'Please agree to terms and conditions' }));
             return;
         }
+        
+        // const encryptedData = CryptoJS.AES.encrypt('yourData', 'secretKey').toString();
         const activationLink = 'http://127.0.0.1:8000/account-activation-form'
         const payload = {
             email: user.email,
