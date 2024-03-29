@@ -1,14 +1,18 @@
 // Import Libraries
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import provincesData from '../data/provincesData';
-import districtsData from '../data/districtsData';
-import municipalitiesData from '../data/municipalitiesData';
 import './Registration.css';
 import Navbar2 from './Navbar2';
+import { useLocation } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
+import axios from 'axios';
 
 function Registration() {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const encryptedEmail = searchParams.get('email');
+    // const encryptedOrganizationType = searchParams.get('organizationType');
 
     const [verifyStatus, setVerifyStatus] = useState(false);
 
@@ -17,12 +21,6 @@ function Registration() {
     const [phoneHide, setPhoneHide] = useState(true);
 
     const [showRemainingServices, setShowRemainingServices] = useState(false);
-
-
-    // Variable Declaration
-    const provinces = provincesData;
-    const districtsByProvince = districtsData;
-    const municipalitiesByDistrict = municipalitiesData;
 
 
     const [userr, setUserr] = useState({
@@ -138,111 +136,176 @@ function Registration() {
             return;
         }
 
-        setUserr({
-            fmname: '',
-            lname: '',
-            province_type: '',
-            district_type: '',
-            municipality_type: '',
-            wordno: '',
-            tole: '',
-            phone: '',
-            purpose: '',
-        })
-
-        setError({
-            fmname: '',
-            lname: '',
-            province_type: '',
-            district_type: '',
-            municipality_type: '',
-            wordno: '',
-            tole: '',
-            phone: '',
-            purpose: '',
-        })
-
-        alert('Your request is successfully submit ! Please check your email.')
+        try {
+            var payload={}
+            payload.fmname= userr.fmname,
+            payload.lname= userr.lname,
+            payload.province_id= userr.selectedProvince,
+            payload.district_id= userr.selectedDistrict,
+            payload.municipality_id= userr.selectedDistrict,
+            payload.wardno= userr.wordno,
+            payload.tole= userr.tole,
+            payload.phone= userr.phone,
+            payload.purpose= userr.purpose,
+            payload.email=encryptedEmail
+            axios.post('api/profiles',payload, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    setMsg('Data has been stored sucessfully');
+                    setUserr({
+                        fmname: '',
+                        lname: '',
+                        selectedProvince: '',
+                        selectedDistrict: '',
+                        selectedMunicipality: '',
+                        wordno: '',
+                        tole: '',
+                        phone: '',
+                        purpose: '',
+                    })
+            
+                    setError({
+                        fmname: '',
+                        lname: '',
+                        province_type: '',
+                        district_type: '',
+                        municipality_type: '',
+                        wordno: '',
+                        tole: '',
+                        phone: '',
+                        purpose: '',
+                    })
+                } else {
+                    console.error('Failed to send email');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
     // -----------------------------------
+
+
+    const [provinces, setProvinces] = useState([]);
+    const [districtsByProvince, setDistrictsByProvince] = useState([]);
+    const [municipalitiesByDistrict, setMunicipalitiesByDistrict] = useState([]);
+
+    useEffect(() => {
+        axios.get('api/provinces')
+            .then(response => {
+                setProvinces(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching provinces:', error);
+            });
+    }, []);
 
     const handleProvinceChange = (e) => {
         const provinceId = parseInt(e.target.value, 10);
         setUserr(prevUserr => ({
             ...prevUserr,
             selectedProvince: provinceId,
-            selectedDistrict: null // Reset district when province changes
+            selectedDistrict: '', 
+            selectedMunicipality: ''
         }));
+        console.log(provinceId);
+        axios.get(`api/districts/${provinceId}`)
+            .then(response => {
+                setDistrictsByProvince(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching districts:', error);
+            });
     };
 
+        
     const handleDistrictChange = (e) => {
         const districtId = e.target.value;
+        console.log(districtId);
         setUserr(prevUserr => ({
             ...prevUserr,
-            selectedDistrict: districtId
+            selectedDistrict: districtId,
+            selectedMunicipality: ''
         }));
+        axios.get(`api/municipalities/${districtId}`)
+            .then(response => {
+                setMunicipalitiesByDistrict(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching municipalities:', error);
+            });
     };
 
 
-    const sendOtp = async () => {
+    // const sendOtp = async () => {
 
-        const currentTime = new Date();
+    //     const currentTime = new Date();
 
-        if (!lastRequestTime || currentTime.getTime() - lastRequestTime.getTime() >= 2 * 60 * 1000) {
-            // If the user hasn't clicked in the last 2 minutes or it's the first click
+    //     if (!lastRequestTime || currentTime.getTime() - lastRequestTime.getTime() >= 2 * 60 * 1000) {
+    //         // If the user hasn't clicked in the last 2 minutes or it's the first click
 
 
-            // try {
-            //     const recaptchaContainer = document.createElement('div');
-            //     document.body.appendChild(recaptchaContainer);
+    //         // try {
+    //         //     const recaptchaContainer = document.createElement('div');
+    //         //     document.body.appendChild(recaptchaContainer);
 
-            //     const recaptcha = new RecaptchaVerifier(auth, recaptchaContainer, {});
-            //     const confirmation = await signInWithPhoneNumber(auth, userr.phone, recaptcha);
-            //     // Save the ConfirmationResult object in state
-            //     setUser(confirmation);
-            //     console.log(confirmation);
-            //     setVerifyStatus(true)
+    //         //     const recaptcha = new RecaptchaVerifier(auth, recaptchaContainer, {});
+    //         //     const confirmation = await signInWithPhoneNumber(auth, userr.phone, recaptcha);
+    //         //     // Save the ConfirmationResult object in state
+    //         //     setUser(confirmation);
+    //         //     console.log(confirmation);
+    //         //     setVerifyStatus(true)
 
-            //     toast.success("OTP send successfully ! Please check your phone");
-            //     setLastRequestTime(currentTime);
+    //         //     toast.success("OTP send successfully ! Please check your phone");
+    //         //     setLastRequestTime(currentTime);
 
-            // } catch (err) {
-            //     console.error(err);
-            // }
+    //         // } catch (err) {
+    //         //     console.error(err);
+    //         // }
 
-            setVerifyStatus(true)
+    //         setVerifyStatus(true)
 
-            toast.success("OTP send successfully ! Please check your phone");
-            setLastRequestTime(currentTime);
-        }
-        else {
-            // If the user has clicked within the last 2 minutes
-            toast.error('Please wait 2 minutes before request OTP again')
-        }
-    }
+    //         toast.success("OTP send successfully ! Please check your phone");
+    //         setLastRequestTime(currentTime);
+    //     }
+    //     else {
+    //         // If the user has clicked within the last 2 minutes
+    //         toast.error('Please wait 2 minutes before request OTP again')
+    //     }
+    // }
 
-    const verifyOtp = async () => {
-        // try {
-        //     const data = await user.confirm(userr.otp);
-        //     toast.success("OTP Verified! Request the Demo");
+    // const verifyOtp = async () => {
+    //     // try {
+    //     //     const data = await user.confirm(userr.otp);
+    //     //     toast.success("OTP Verified! Request the Demo");
 
-        //     setPhoneHide(false)
+    //     //     setPhoneHide(false)
 
-        //     console.log(data);
-        // } catch (err) {
-        //     setError((prevError) => ({ ...prevError, otp: 'Invalid OTP' }));
-        //     console.error(err);
-        // }
+    //     //     console.log(data);
+    //     // } catch (err) {
+    //     //     setError((prevError) => ({ ...prevError, otp: 'Invalid OTP' }));
+    //     //     console.error(err);
+    //     // }
 
-        toast.success("OTP Verified Successfully! Please Request the Demo");
+    //     toast.success("OTP Verified Successfully! Please Request the Demo");
 
-        setPhoneHide(false)
-        setError((prevError) => ({ ...prevError, otp: 'Invalid OTP' }));
-    };
+    //     setPhoneHide(false)
+    //     setError((prevError) => ({ ...prevError, otp: 'Invalid OTP' }));
+    // };
 
     return (
         <>
             <Navbar2 />
+            {/* <p>Decrypted Email: {decryptedEmail}</p>
+      <p>Decrypted Organization Type: {decryptedOrganizationType}</p> */}
             <div className="my-4 new_container rounded shadow">
                 <div className="row">
                     <div className="card">
@@ -258,7 +321,7 @@ function Registration() {
                                                 type="text"
                                                 className={`form-control custom-reg-form ${error.fmname ? 'is-invalid' : ''}`}
                                                 placeholder='Enter first and middle name'
-                                                name='fmname'
+                                                name='fmname' value={userr.fmname}
                                                 onChange={handleInputChange}
                                             />
                                             {error.fmname && <div id="name-error" className="invalid-feedback">{error.fmname}</div>}
@@ -271,7 +334,7 @@ function Registration() {
                                                 type="text"
                                                 className={`form-control custom-reg-form ${error.lname ? 'is-invalid' : ''}`}
                                                 placeholder='Enter last name'
-                                                name='lname'
+                                                name='lname' value={userr.lname}
                                                 onChange={handleInputChange}
                                             />
                                             {error.lname && <div id="name-error" className="invalid-feedback">{error.lname}</div>}
@@ -288,11 +351,7 @@ function Registration() {
                                                 className={`form-select custom-reg-form ${error.province_type ? 'is-invalid' : ''}`}
                                                 name="province_type"
                                                 aria-label="Province"
-                                                onChange={(e) => {
-                                                    handleProvinceChange(e);
-                                                    setUserr(prevUserr => ({ ...prevUserr, selectedProvince: e.target.value }));
-                                                    setError((prevErrors) => ({ ...prevErrors, province_type: '' }));
-                                                }}
+                                                onChange={handleProvinceChange}
                                                 value={userr.selectedProvince}
                                             >
                                                 <option selected>
@@ -316,22 +375,17 @@ function Registration() {
                                                 className={`form-select custom-reg-form ${error.district_type ? 'is-invalid' : ''}`}
                                                 name="district_type"
                                                 aria-label="District"
-                                                onChange={(e) => {
-                                                    handleDistrictChange(e);
-                                                    setUserr(prevUserr => ({ ...prevUserr, selectedDistrict: e.target.value }));
-                                                    setError((prevErrors) => ({ ...prevErrors, district_type: '' }));
-                                                }}
+                                                onChange={handleDistrictChange}
                                                 value={userr.selectedDistrict}
                                             >
-                                                <option selected disabled>
+                                                <option selected>
                                                     Select District
                                                 </option>
-                                                {userr.selectedProvince &&
-                                                    districtsByProvince[userr.selectedProvince].map((district) => (
-                                                        <option key={district.id} value={district.id}>
-                                                            {district.name}
-                                                        </option>
-                                                    ))}
+                                                {districtsByProvince.map((district) => (
+                                                    <option key={district.id} value={district.id}>
+                                                        {district.district_name}
+                                                    </option>
+                                                ))}
                                             </select>
                                             {error.district_type && (
                                                 <div className="invalid-feedback">{error.district_type}</div>
@@ -355,15 +409,14 @@ function Registration() {
                                                 }}
                                                 value={userr.selectedMunicipality}
                                             >
-                                                <option selected disabled>
+                                                <option selected>
                                                     Select Municipality
                                                 </option>
-                                                {userr.selectedDistrict &&
-                                                    municipalitiesByDistrict[userr.selectedDistrict].map((municipality) => (
-                                                        <option key={municipality} value={municipality}>
-                                                            {municipality}
-                                                        </option>
-                                                    ))}
+                                                {municipalitiesByDistrict.map((municipality) => (
+                                                    <option key={municipality.id} value={municipality.id}>
+                                                        {municipality.municipality_name}
+                                                    </option>
+                                                ))}
                                             </select>
                                             {error.municipality_type && (
                                                 <div className="invalid-feedback">{error.municipality_type}</div>
@@ -376,7 +429,7 @@ function Registration() {
                                                 type="text"
                                                 className={`form-control custom-reg-form ${error.wordno ? 'is-invalid' : ''}`}
                                                 placeholder='Enter Ward no'
-                                                name='wordno'
+                                                name='wordno' value={userr.wordno}
                                                 onChange={handleInputChange}
                                             />
                                             {error.wordno && <div id="name-error" className="invalid-feedback">{error.wordno}</div>}
@@ -393,7 +446,7 @@ function Registration() {
                                                 type="text"
                                                 name="tole"
                                                 className={`form-control custom-reg-form ${error.tole ? 'is-invalid' : ''}`}
-                                                placeholder='Enter Tole'
+                                                placeholder='Enter Tole'  value={userr.tole}
                                                 onChange={handleInputChange}
                                             />
                                             {error.tole && <div id="name-error" className="invalid-feedback">{error.tole}</div>}
@@ -405,14 +458,14 @@ function Registration() {
                                 <div className="mb-2">
                                     <div className="row g-2">
                                         {/* Phone */}
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <small>Phone <span className="text-danger">*</span></small>
                                             {phoneHide ?
                                                 (<input
                                                     type="text"
                                                     className={`form-control custom-reg-form ${error.phone ? 'is-invalid' : ''}`}
                                                     placeholder='9xxxxxxxxx'
-                                                    name='phone'
+                                                    name='phone' value={userr.phone}
                                                     onChange={handleInputChange}
                                                 />) :
                                                 (<input
@@ -423,13 +476,13 @@ function Registration() {
                                                     onChange={handleInputChange}
                                                     readOnly
                                                 />)}
-                                            <div style={{ lineHeight: '1' }}>
+                                            {/* <div style={{ lineHeight: '1' }}>
                                                 <small className='text-warning'>* Please verify your mobile number before requesting a demo account</small>
-                                            </div>
+                                            </div> */}
 
                                             {error.phone && <div id="name-error" className="invalid-feedback">{error.phone}</div>}
                                         </div>
-                                        <div className="col-md-6">
+                                        {/* <div className="col-md-6">
                                             <div className="row">
                                                 <div className="col-md-4 mt-4">
                                                     <button type="button" class="btn btn-outline-primary btn-design" onClick={sendOtp}>Send OTP</button>
@@ -467,7 +520,7 @@ function Registration() {
                                                         ""
                                                 }
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
 
@@ -560,7 +613,7 @@ function Registration() {
                                                 className={`form-control custom-reg-form ${error.purpose ? 'is-invalid' : ''}`}
                                                 placeholder='Enter your main purpose for requesting demo'
                                                 name='purpose'
-                                                // value={userr.purpose}
+                                                value={userr.purpose}
                                                 onChange={handleInputChange}
                                                 rows="3"
                                             />

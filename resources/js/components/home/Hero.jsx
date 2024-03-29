@@ -64,13 +64,15 @@ const Hero = () => {
             setErrors((prevErrors) => ({ ...prevErrors, agreeTerms: 'Please agree to terms and conditions' }));
             return;
         }
+        // const secretKey = '85a998cd40a24cef8489d0767837b085';
+        // const encryptedEmail = CryptoJS.AES.encrypt(user.email, secretKey).toString();
+        // const encryptedOrganizationType = CryptoJS.AES.encrypt(user.organizationType, secretKey).toString();
         
-        // const encryptedData = CryptoJS.AES.encrypt('yourData', 'secretKey').toString();
-        const activationLink = 'http://127.0.0.1:8000/account-activation-form'
+        // const activationLink = `${window.location.origin}/account-activation-form`;
         const payload = {
             email: user.email,
             organizationType: user.organizationType,
-            activationLink: activationLink,
+            // activationLink: activationLink,
         };
         axios.post('api/send-email',payload, {
             headers: {
@@ -109,7 +111,7 @@ const Hero = () => {
         }));
         setErrors((prevErrors) => ({
             ...prevErrors,
-            [name]: '', // Clear the error when the user starts typing
+            [name]: '',
         }));
     };
 
