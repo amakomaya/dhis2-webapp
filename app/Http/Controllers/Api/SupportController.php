@@ -29,6 +29,7 @@ class SupportController extends Controller
                 'message' => 'This email is already subscribed.'
             ], 422);
         }
+    
         $subscriber = Subscriber::create($data);
         return response()->json([
             'data' => $subscriber,
