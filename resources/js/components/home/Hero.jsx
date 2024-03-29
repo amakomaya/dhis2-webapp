@@ -24,7 +24,9 @@ const Hero = () => {
         return emailRegex.test(email);
     };
 
-    const [msg, setMsg] = useState("")
+    const [msg, setMsg] = useState("");
+    const [storedEmail, setStoredEmail] = useState("");
+
 
     const [text] = useTypewriter({
         words: ['Empowering Health Information Management with DHIS2', 'Visualize Your Data with DHIS2', 'Manage Your Report With DHIS2'],
@@ -74,6 +76,7 @@ const Hero = () => {
         })
         .then(response => {
             if (response.status === 200) {
+                console.log(response.data);
                 setMsg('Please verify your email for account activation');
                 setUser({
                     email: '',
@@ -85,6 +88,8 @@ const Hero = () => {
                     organizationType: '',
                     agreeTerms: '',
                 });
+                setStoredEmail(user.email);
+
             } else {
                 console.error('Failed to send email');
             }
@@ -132,12 +137,12 @@ const Hero = () => {
                                     <div className="text-center text-primary">
                                         <div><i className="bi bi-check-circle-fill"></i> Success !</div>
                                         {msg === 'Please verify your email for account activation' ? (
-                                            <p>Please verify your email for account activation
+                                            <p>Please verify your email({storedEmail})for account activation
                                                 <br/>
                                                 Let's Start !
                                             </p>
                                         ) : (
-                                            <p>Your email is already registered</p>
+                                            <p>Your email ({storedEmail})is already registered</p>
                                         )}
                                     </div>
                                 ) : (

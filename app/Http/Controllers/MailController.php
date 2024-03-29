@@ -31,7 +31,8 @@ class MailController extends Controller
         $existingUser = User::where('email', $data['email'])->first();
         if ($existingUser) {
             return response()->json([
-                'message' => 'This email is already registered !'
+                'message' => 'This email is already registered !',
+                'data' => $user,
             ], 422);
         }
         $user = User::create($data);
