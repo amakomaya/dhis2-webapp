@@ -25,7 +25,10 @@ class ProfileController extends Controller
         $userId = $user->id;
         $data = json_decode($request->getContent(), true);
         $data['user_id'] = $userId;
-        $profile = Profile::create($data);
+        $profile = Profile::updateOrCreate(
+            ['user_id' => $userId],
+            $data
+        );        
         return response()->json([
             'data' => $profile,
             'response' => 200,

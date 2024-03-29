@@ -155,8 +155,12 @@ function Registration() {
             })
             .then(response => {
                 if (response.status === 200) {
-                    toast.success('Data has been stored sucessfully !');
-                    setMsg('Data has been stored sucessfully');
+                    toast.success(
+                        <div>
+                            <strong>Form Submission Confirmation:Stay Tuned for Updates!</strong><br/><br/>
+                            <p> Thank you for completing the form. We have received your request and will be in touch shortly. Please keep an eye on your email and phone for further communication. Have a great day!</p>
+                        </div>
+                    );
                     setUserr({
                         fmname: '',
                         lname: '',
@@ -217,7 +221,6 @@ function Registration() {
             selectedDistrict: '', 
             selectedMunicipality: ''
         }));
-        console.log(provinceId);
         axios.get(`api/districts/${provinceId}`)
             .then(response => {
                 setDistrictsByProvince(response.data);
@@ -230,7 +233,6 @@ function Registration() {
         
     const handleDistrictChange = (e) => {
         const districtId = e.target.value;
-        console.log(districtId);
         setUserr(prevUserr => ({
             ...prevUserr,
             selectedDistrict: districtId,

@@ -14,7 +14,6 @@ function Footer() {
         const payload = {
             email: formData.email
         };
-        console.log(payload);
         axios.post('api/subscribers', payload, {
             headers: {
                 'Content-Type': 'application/json',
@@ -26,12 +25,24 @@ function Footer() {
                 setFormData({
                     email: ''
                 });
-            } else {
+            } 
+            else if(response.status === 422){
+                toast.success('This email is already subscribed  !');
+                setFormData({
+                    email: ''
+                });
+            }
+            else {
                 console.error('Failed to store data');
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            if (error.response && error.response.status === 422 && error.response.data.message) {
+                toast.warning(error.response.data.message);
+            } else {
+                console.error('Error:', error);
+                toast.error('Failed to send email. Please try again later.');
+            }
         });
     };
 

@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useTypewriter } from 'react-simple-typewriter';
+import { toast} from 'react-toastify';
 
 const Hero = () => {
     const [user, setUser] = useState({
@@ -73,7 +74,6 @@ const Hero = () => {
         })
         .then(response => {
             if (response.status === 200) {
-                console.log('Email sent successfully');
                 setMsg('Please verify your email for account activation');
                 setUser({
                     email: '',
@@ -90,7 +90,12 @@ const Hero = () => {
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            if (error.response && error.response.status === 422 && error.response.data.message) {
+                setMsg('This email is alreasdy registered');
+            } else {
+                console.error('Error:', error);
+                toast.error('Failed to send email. Please try again later.');
+            }
         });
     };
     
@@ -109,8 +114,8 @@ const Hero = () => {
 
     return (
         <>
-            <section className="hero-section py-5" id="hero">
-                <div className="container-fluid py-5">
+            <section className="hero-section" id="hero">
+                <div className="container-fluid">
                     <div className="row justify-content-evenly py-5">
                         <div className="col-md-5 pt-2" data-aos="fade-up" data-aos-upoffset="200">
                             <h1 className="fw-bold">
@@ -123,13 +128,21 @@ const Hero = () => {
                         </div>
                         <div className="col-md-4  pb-5 pt-4 px-4 border rounded shadow registration-form" data-aos="zoom-in" data-aos-upoffset="200">
 
-                            {(msg !== '')
-                                ?
-                                <p className="text-center text-primary">
-                                    <div><i class="bi bi-check-circle-fill"></i> Success !</div>
-                                    Please verify your email for account activation</p>
-                                :
-                                <p className="text-center">Let's Start !</p>}
+                                {msg !== '' ? (
+                                    <div className="text-center text-primary">
+                                        <div><i className="bi bi-check-circle-fill"></i> Success !</div>
+                                        {msg === 'Please verify your email for account activation' ? (
+                                            <p>Please verify your email for account activation
+                                                <br/>
+                                                Let's Start !
+                                            </p>
+                                        ) : (
+                                            <p>Your email is already registered</p>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <p className="text-center">Let's Start !</p>
+                                )}
 
 
                             <form ref={form} onSubmit={sendEmail}>
@@ -172,7 +185,7 @@ const Hero = () => {
                                                 onChange={handleInputChange}
                                             />
                                             <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                <small>Agree to all terms and conditions</small>
+                                                <small>Agree to all <a href="#" target="_blank">terms and conditions</a></small>
                                             </label>
                                         </div>
                                         {user.agreeTerms === false && (

@@ -28,6 +28,12 @@ class MailController extends Controller
             'email' => $email,
             'organization_types' => $organizationType,
         ];  
+        $existingUser = User::where('email', $data['email'])->first();
+        if ($existingUser) {
+            return response()->json([
+                'message' => 'This email is already registered !'
+            ], 422);
+        }
         $user = User::create($data);
         return response()->json([
             'message' => 'Email sent and user created successfully',

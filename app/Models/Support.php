@@ -10,7 +10,7 @@ class Support extends Model
     use HasFactory;
     protected $table='support_informations';
     protected $fillable = [
-       'first_name', 'last_name','email', 'subject','message'
+       'name','email', 'subject','message'
     ];
 
     

@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'; 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { toast} from 'react-toastify';
 
 function SupportSection() {
     const form = useRef();
     const [formData, setFormData] = useState({
-        fname: '',
-        lname: '',
+        name: '',
         email: '',
         subject: 'Health Facility Setup',
         message: ''
@@ -16,8 +16,7 @@ function SupportSection() {
     const sendEmail = (e) => {
         e.preventDefault(); 
         const payload = {
-            first_name: formData.fname,
-            last_name: formData.lname,
+            name: formData.name,
             email: formData.email,
             subject: formData.subject,
             message: formData.message
@@ -31,13 +30,13 @@ function SupportSection() {
             if (response.status === 200) {
                 toast.success('Thank you for you support !');
                 setFormData({
-                    fname: '',
-                    lname: '',
+                    name: '',
                     email: '',
                     subject: '',
                     message: ''
                 });
-            } else {
+            } 
+            else {
                 console.error('Failed to store data');
                 
             }
@@ -75,16 +74,16 @@ function SupportSection() {
                             <div className="mb-4 text-secondary">
                                 <form ref={form} onSubmit={sendEmail}>
                                     <div className="mb-3">
-                                        <input type="text" className="form-control" id="fname" name="fname"
-                                            value={formData.fname} onChange={handleChange}
-                                            placeholder="Enter your first name * " required />
+                                        <input type="text" className="form-control" id="name" name="name"
+                                            value={formData.name} onChange={handleChange}
+                                            placeholder="Enter your name * " required />
                                     </div>
 
-                                    <div className="mb-3">
+                                    {/* <div className="mb-3">
                                         <input type="text" className="form-control contact-form" id="lname" name="lname"
                                             value={formData.lname} onChange={handleChange}
                                             placeholder="Enter your last name *" required />
-                                    </div>
+                                    </div> */}
 
                                     <div className="mb-3">
                                         <input type="email" className="form-control contact-form" id="email" name="email"
