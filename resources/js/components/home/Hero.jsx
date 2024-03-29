@@ -4,9 +4,6 @@ import 'aos/dist/aos.css';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useTypewriter } from 'react-simple-typewriter';
-import CryptoJS from 'crypto-js';
-
-// import emailjs from '@emailjs/browser';
 
 const Hero = () => {
     const [user, setUser] = useState({
@@ -64,15 +61,10 @@ const Hero = () => {
             setErrors((prevErrors) => ({ ...prevErrors, agreeTerms: 'Please agree to terms and conditions' }));
             return;
         }
-        // const secretKey = '85a998cd40a24cef8489d0767837b085';
-        // const encryptedEmail = CryptoJS.AES.encrypt(user.email, secretKey).toString();
-        // const encryptedOrganizationType = CryptoJS.AES.encrypt(user.organizationType, secretKey).toString();
         
-        // const activationLink = `${window.location.origin}/account-activation-form`;
         const payload = {
             email: user.email,
             organizationType: user.organizationType,
-            // activationLink: activationLink,
         };
         axios.post('api/send-email',payload, {
             headers: {

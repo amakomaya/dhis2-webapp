@@ -155,6 +155,7 @@ function Registration() {
             })
             .then(response => {
                 if (response.status === 200) {
+                    toast.success('Data has been stored sucessfully !');
                     setMsg('Data has been stored sucessfully');
                     setUserr({
                         fmname: '',

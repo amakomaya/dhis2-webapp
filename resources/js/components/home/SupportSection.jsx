@@ -22,7 +22,6 @@ function SupportSection() {
             subject: formData.subject,
             message: formData.message
         };
-        console.log(payload);
         axios.post('api/support-info', payload, {
             headers: {
                 'Content-Type': 'application/json',
@@ -40,6 +39,7 @@ function SupportSection() {
                 });
             } else {
                 console.error('Failed to store data');
+                
             }
         })
         .catch(error => {
