@@ -20,16 +20,19 @@ const PlanSection = () => {
                             <div className="mb-4 text-secondary shadow rounded py-4 ps-4">
                                 <h3 className="text-primary">Calculate Price</h3>
                                 <ul className='premium'>
-                                    <li>All HMIS tools custom data tracking</li>
-                                    <li>ICD - 11 Codes</li>
+                                    {/* <li>All HMIS tools custom data tracking</li> */}
+                                    <li>Tools for tracking data</li>
+                                    {/* <li>ICD - 11 Codes</li> */}
+                                    <li>ICD - 11 Codes	Standards, Frameworks, Guidelines ( ICD, HMIS ...)</li>
                                     <li>Data Interoperability</li>
                                     <li>API for developers</li>
                                     <li>Advance data field</li>
-                                    <li>Report Card for individual patients - HMIS2 Report</li>
+                                    {/* <li>Report Card for individual patients - HMIS2 Report</li> */}
+                                    <li>Records and Report</li>
                                     <li>24/7 Support</li>
-                                    <li>Print card, Report format</li>
-                                    <li>Monthly Report</li>
-                                    <li>Video tutorials for how to use (free only)</li>
+                                    {/* <li>Print card, Report format</li> */}
+                                    {/* <li>Monthly Report</li> */}
+                                    <li>Video tutorials for how to use</li>
                                     <li>How to operate system training</li>
                                     <li>Free user guidelines book</li>
                                 </ul>

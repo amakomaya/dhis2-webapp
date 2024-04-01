@@ -127,9 +127,7 @@ const Hero = () => {
                                 {text}
                             </h1>
 
-                            <p className="text-secondary">Explore the comprehensive Data Management Solution for HMIS in Nepal using
-                                DHIS2: Register, Cards, and monthly Reports. Get Started for free register your account
-                                establish a data management server. </p>
+                            <p className="text-secondary">Exploring a comprehensive data management solution applicable across various sectors in Nepal using DHIS2. Get started for free by signing up and establishing a data management server tailored to your organization's needs. </p>
                         </div>
                         <div className="col-md-4  pb-5 pt-4 px-4 border rounded shadow registration-form" data-aos="zoom-in" data-aos-upoffset="200">
 
