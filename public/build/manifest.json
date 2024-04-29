@@ -5,14 +5,14 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-sGNPmYUv.js",
+    "file": "assets/app-7rOAlnix.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
       "assets/app-AqGvODfI.css"
     ],
     "assets": [
-      "assets/logo_5-C4Y6xtqj.png",
+      "assets/logo_5-9upUL9ev.png",
       "assets/dashboard2-BAV-KsRC.png"
     ]
   },
@@ -21,7 +21,7 @@
     "src": "resources/js/components/assets/dashboard2.png"
   },
   "resources/js/components/assets/logo_5.png": {
-    "file": "assets/logo_5-C4Y6xtqj.png",
+    "file": "assets/logo_5-9upUL9ev.png",
     "src": "resources/js/components/assets/logo_5.png"
   }
 }
