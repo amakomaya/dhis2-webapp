@@ -39,7 +39,6 @@ class DataEmail extends Mailable
     /**
      * Get the message content definition.
      */
-
      public function build()
     {
         return $this->subject('Data Email')
