@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Mail\ActivationEmail;
 use App\Mail\DataEmail;
+use App\Mail\ProfileEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 
@@ -44,6 +45,22 @@ class MailController extends Controller
             'message' => 'Email sent and user created successfully',
             'data' => $user,
         ], 200);
+
+    }
+
+    public function sendProfileEmail(Request $request)
+    {
+        $data = json_decode($request->getContent(), true);
+        $encryptedEmail = $data['email'];
+        $data['email'] = Crypt::decrypt($encryptedEmail);
+        $email =$data['email'];
+        $fname =$data['fmname'];
+        $lname = $data['lname'];
+        $phone = $data['phone'];
+        $purpose = $data['purpose'];
+        $anotherEmail = 'rmchndrapdl@gmail.com'; 
+        $ccEmails = 'dhis2.amakomaya@gmail.com';
+        Mail::to($anotherEmail) ->cc($ccEmails)->send(new ProfileEmail($email,$fname,$lname,$phone,$purpose)); 
 
     }
 

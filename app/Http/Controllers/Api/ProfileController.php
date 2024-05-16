@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Controllers\MailController;
+
 
 
 
@@ -17,7 +19,6 @@ class ProfileController extends Controller
         $encryptedEmail = $request->input('email');
         $decrptedemail = Crypt::decryptString($encryptedEmail);
         $email = substr($decrptedemail, 6, -2);
-
         $user = User::where('email', $email)->first();
         if (!$user) {
             throw new \Exception('User not found for the provided email.');
@@ -28,7 +29,9 @@ class ProfileController extends Controller
         $profile = Profile::updateOrCreate(
             ['user_id' => $userId],
             $data
-        );        
+        );  
+        $sendMailController = new MailController();
+        $sendMailController->sendProfileEmail($request);  
         return response()->json([
             'data' => $profile,
             'response' => 200,

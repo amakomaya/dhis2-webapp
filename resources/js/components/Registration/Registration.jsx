@@ -148,6 +148,8 @@ function Registration() {
             payload.phone= userr.phone,
             payload.purpose= userr.purpose,
             payload.email=encryptedEmail
+            
+            // console.log(payload);
             axios.post('api/profiles',payload, {
                 headers: {
                     'Content-Type': 'application/json',
