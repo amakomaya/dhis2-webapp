@@ -1,4 +1,5 @@
 import CustomizeSection from "./CustomizeSection";
+import Products from "./Products";
 import FAQSection from "./FAQSection";
 import Hero from "./Hero";
 import Navbar from "./Navbar";
@@ -12,6 +13,7 @@ const Home = () => {
         <>
             <Navbar/>
             <Hero />
+            {/* <Products/> */}
             <WhySection />
             <PlanSection />
             <CustomizeSection />

@@ -96,6 +96,13 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
 }
+#products{
+    position: relative;
+    background-image: url('images/server2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 .overlay {
     position: absolute;
