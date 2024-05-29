@@ -17,7 +17,7 @@ class MailController extends Controller
     {
         $email = $request->input('email');
         $organizationType = $request->input('organizationType');
-    
+
         $data = [
             'email' => $email,
             'organization_types' => $organizationType,
