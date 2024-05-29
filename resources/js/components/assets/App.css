@@ -153,4 +153,10 @@ nav {
 #footer p {
     color: white;
 }
-
+ 
+.text{
+    color: #000000;
+    text-align: justify;
+    padding-right: 50px;
+    padding-left: 20px;
+}

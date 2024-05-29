@@ -102,6 +102,7 @@ nav {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: #d6d8ee;
 }
 
 .overlay {
@@ -111,6 +112,16 @@ nav {
     background-color: rgba(195, 195, 245, 0.8);
 }
 .customization_process .container {
+    position: relative;
+    z-index: 1;
+    padding: 50px 0px 20px 0px;
+}
+
+#products .heading-text {
+    position: relative;
+    z-index: 2; 
+}
+#products .container {
     position: relative;
     z-index: 1;
     padding: 50px 0px 20px 0px;
@@ -159,4 +170,7 @@ nav {
 #footer p {
     color: white;
 }
+ 
+
+
 

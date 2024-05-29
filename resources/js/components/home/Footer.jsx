@@ -102,13 +102,13 @@ function Footer() {
                                         DHIS2 Advisory Services
                                     </p>
                                     <p>
-                                        {/* <a className="text-white"></a> */}
-                                        Usage Terms
+                                        <a href="/terms-and-conditions" target="_blank" style={{color:'white', textDecoration: 'none'}}> Usage Terms</a>
+                                       
                                     </p>
-                                    <p>
-                                        {/* <a className="text-white"></a> */}
-                                        Data Privacy Statement
-                                    </p>
+                                    <p><a href="/data-privacy-statement" target="_blank" style={{color:'white', textDecoration: 'none'}}>Data Privacy Statement</a></p>
+
+
+                                    <p><a href="/system-use-terms" target="_blank" style={{color:'white', textDecoration: 'none'}}>System Use Terms</a></p>
                                     <p>
                                         {/* <a className="text-white"></a> */}
                                         Official Announcements

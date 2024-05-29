@@ -4,6 +4,11 @@ import App from './App.jsx';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
+import TermsandCondition from './home/TermsandCondition.jsx';
+import SystemUseTerms from './home/SystemUseTerms.jsx';
+import DataPrivacy from './home/DataPrivacy.jsx';
+
+
 
 // Define your routes
 const routes = [
@@ -12,7 +17,12 @@ const routes = [
     element: <App />,
     children: [
       { path: '/', element: <Home /> },
-      { path: '/account-activation-form', element: <Registration /> }
+      { path: '/account-activation-form', element: <Registration /> },
+      { path: '/terms-and-conditions', element: <TermsandCondition /> },
+      { path: '/system-use-terms', element: <SystemUseTerms/> },
+      { path: '/data-privacy-statement', element: <DataPrivacy/> }
+
+
     ]
   }
 ];

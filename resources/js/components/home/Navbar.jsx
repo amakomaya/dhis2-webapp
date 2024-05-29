@@ -34,7 +34,7 @@ const Navbar = () => {
                                 <a className="nav-link px-3" href="#customization_process">Customize</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link px-3" href="#products">Products</a>
+                                <a className="nav-link px-3" href="#products">Projects</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link px-3" href="#faqs">FAQs</a>

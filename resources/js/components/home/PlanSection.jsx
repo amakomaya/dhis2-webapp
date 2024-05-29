@@ -29,7 +29,7 @@ const PlanSection = () => {
                                     <li>Advance data field</li>
                                     {/* <li>Report Card for individual patients - HMIS2 Report</li> */}
                                     <li>Records and Report</li>
-                                    <li>24/7 Support</li>
+                                    {/* <li>24/7 Support</li> */}
                                     {/* <li>Print card, Report format</li> */}
                                     {/* <li>Monthly Report</li> */}
                                     <li>Video tutorials for how to use</li>
@@ -51,7 +51,8 @@ const PlanSection = () => {
                                         <i className="bi bi-shield-fill-check text-primary fs-5"></i> Support office team
                                     </h6>
                                     <div className="text-center pt-3">
-                                        <button className="btn btn-primary btn-block px-5">Free</button>
+                                        <a href='#hero' className="btn btn-primary px-5">Free</a>
+
                                     </div>
                                 </div>
                             </div>

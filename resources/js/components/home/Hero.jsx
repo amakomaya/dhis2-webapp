@@ -76,8 +76,11 @@ const Hero = () => {
         })
         .then(response => {
             if (response.status === 200) {
-                console.log(response.data);
+                // console.log(response.data);
                 setMsg('Please verify your email for account activation');
+                const storedEmailValue = user.email;
+                setStoredEmail(storedEmailValue);
+
                 setUser({
                     email: '',
                     organizationType: '',
@@ -88,7 +91,6 @@ const Hero = () => {
                     organizationType: '',
                     agreeTerms: '',
                 });
-                setStoredEmail(user.email);
 
             } else {
                 console.error('Failed to send email');
@@ -140,7 +142,7 @@ const Hero = () => {
                                                 Let's Start !
                                             </p>
                                         ) : (
-                                            <p>Your email ({storedEmail})is already registered</p>
+                                            <p>Your email ({user.email})is already registered</p>
                                         )}
                                     </div>
                                 ) : (
@@ -188,8 +190,10 @@ const Hero = () => {
                                                 onChange={handleInputChange}
                                             />
                                             <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                <small>Agree to all <a href="#" target="_blank">terms and conditions</a></small>
+                                                <small>I accept the <a href="/terms-and-conditions" target="_blank">terms and conditions</a> of use and <a href="/data-privacy-statement" target="_blank">data privacy statement</a></small>
                                             </label>
+
+                                            
                                         </div>
                                         {user.agreeTerms === false && (
                                             <div className="invalid-feedback">{errors.agreeTerms}</div>
