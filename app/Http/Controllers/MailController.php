@@ -18,17 +18,6 @@ class MailController extends Controller
         $email = $request->input('email');
         $organizationType = $request->input('organizationType');
     
-        $encryptedEmail = encrypt($email);
-        $encryptedOrganizationType = encrypt($organizationType);
-    
-        $activationLink = url('/account-activation-form') . "?email=$encryptedEmail&organizationType=$encryptedOrganizationType";
-
-        Mail::to($email)->send(new ActivationEmail($activationLink));
-        
-        $anotherEmail = 'rmchndrapdl@gmail.com'; 
-        $ccEmails = 'dhis2.amakomaya@gmail.com';
-        Mail::to($anotherEmail) ->cc($ccEmails)->send(new DataEmail($email, $organizationType)); 
-
         $data = [
             'email' => $email,
             'organization_types' => $organizationType,
@@ -40,6 +29,17 @@ class MailController extends Controller
                 'data' => $existingUser,
             ], 422);
         }
+      
+        $encryptedEmail = encrypt($email);
+        $encryptedOrganizationType = encrypt($organizationType);
+    
+        $activationLink = url('/account-activation-form') . "?email=$encryptedEmail&organizationType=$encryptedOrganizationType";
+
+        Mail::to($email)->send(new ActivationEmail($activationLink));
+        
+        $anotherEmail = 'rmchndrapdl@gmail.com'; 
+        $ccEmails = 'dhis2.amakomaya@gmail.com';
+        Mail::to($anotherEmail) ->cc($ccEmails)->send(new DataEmail($email, $organizationType)); 
         $user = User::create($data);
         return response()->json([
             'message' => 'Email sent and user created successfully',

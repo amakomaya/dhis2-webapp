@@ -98,7 +98,7 @@ const Hero = () => {
         })
         .catch(error => {
             if (error.response && error.response.status === 422 && error.response.data.message) {
-                setMsg('This email is alreasdy registered');
+                setMsg('This email is already registered');
             } else {
                 console.error('Error:', error);
                 toast.error('Failed to send email. Please try again later.');

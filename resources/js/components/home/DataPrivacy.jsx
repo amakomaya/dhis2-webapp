@@ -22,7 +22,7 @@ const DataPrivacy = () => {
                     <div className="row">
                         <div className="col-sm-12  col-12" data-aos="fade-right" data-aos-upoffset="200">
                             <div className="mb-4 text-secondary shadow rounded py-4 ps-4">
-                                <h3 className="text-subheading" style={{color:"#000000", fontWeight:'bold'}}>Introduction</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}}>1. Introduction</h3>
                                 <p className='text'>
                                     Amakomaya Apps Pvt. Ltd. ("Company") is committed to protecting the privacy and security of our 
                                     clients' data. This Data Privacy Statement outlines how we collect, use, and protect your personal information when 
@@ -31,7 +31,7 @@ const DataPrivacy = () => {
                                 
 
 
-                                <h3 className="text-subheading" style={{color:"#000000",fontWeight:'bold'}}>Our Commitment</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}}>2. Our Commitment</h3>
                                 <p className='text'>
                                     Amakomaya Apps Pvt. Ltd., located at Kathmandu - 2 Lazimpat, Shivabhakta Marga, 304 Nepal, is dedicated to providing robust 
                                     open-source software as a service (SaaS). We ensure that all personal information collected is handled with the highest 
@@ -39,7 +39,7 @@ const DataPrivacy = () => {
                                 </p>
 
                                 
-                                <h3 className="text-subheading" style={{color:"#000000",fontWeight:'bold'}}>Information We Collect</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}}>3. Information We Collect</h3>
                                 <p className='text'>
                                     When you register for our DHIS2 SaaS application, we collect personal information necessary to provide our services. This may include:                                   
                                     <br/>Contact information (email address, phone number, etc.)
@@ -54,19 +54,19 @@ const DataPrivacy = () => {
                                 </p>
                                 
 
-                                <h3 className="text-subheading" style={{color:"#000000",fontWeight:'bold'}}>Data Security</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}} >4. Data Security</h3>
                                 <p className='text'>
                                     Amakomaya Apps Pvt. Ltd. takes data security seriously and implements industry-standard measures to protect your 
                                     personal information from unauthorized access, disclosure, alteration, or destruction.
                                 </p>
 
-                                <h3 className="text-subheading" style={{color:"#000000",fontWeight:'bold'}}>Trial Period and Data Responsibility</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}}>5. Trial Period and Data Responsibility</h3>
                                 <p className='text'>
                                     During the trial period, no fees are charged, and Amakomaya Apps Pvt. Ltd. does not take responsibility for securing data. 
                                     Upon transitioning to a real-time purchasing account and completing the payment, we assume full responsibility for data security and system operation.
                                 </p>
 
-                                <h3 className="text-subheading" style={{color:"#000000", fontWeight:'bold'}}>Annual Maintenance Contracts (AMC)</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}}>6. Annual Maintenance Contracts (AMC)</h3>
                                 <p className='text'>
                                     Our AMC services ensure that regular updates and security patches released by the HISP network are implemented. We offer two categories of AMC:
                                     SaaS with Full Infrastructure: Includes complete solutions, data storage, application hosting, and security.
@@ -75,19 +75,19 @@ const DataPrivacy = () => {
                                 </p>
                                
 
-                                <h3 className="text-subheading" style={{color:"#000000",fontWeight:'bold'}}>Customization and Source Code Use</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}}>7. Customization and Source Code Use</h3>
                                 <p className='text'>
                                      We use the freely available source code of DHIS2 and customize the frontend graphical part as per client requirements. 
                                      Any changes to the core technology are pushed to the HISP at Oslo University for approval and shared through the master build.
                                 </p>
 
-                                <h3 className="text-subheading" style={{color:"#000000",fontWeight:'bold'}}>Changes to This Data Privacy Statement</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}}>8. Changes to This Data Privacy Statement</h3>
                                 <p className='text'>
                                     We reserve the right to modify this Data Privacy Statement at any time. We will notify you of any changes by posting the new 
                                     Data Privacy Statement on this page. Your continued use of our services after the changes are effective will constitute your acceptance of the revised statement.
                                 </p>
 
-                                <h3 className="text-subheading" style={{color:"#000000",fontWeight:'bold'}}> Contact Us</h3>
+                                <h3 className="text-subheading" style={{color:"#000000"}}>9. Contact Us</h3>
                                 <p className='text'>
                                     If you have any questions or concerns about this Data Privacy Statement or our data practices, please contact us:
                                     <br/><br/>
