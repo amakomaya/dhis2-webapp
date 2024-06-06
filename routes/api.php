@@ -8,6 +8,10 @@ use App\Http\Controllers\Api\ProvinceController;
 use App\Http\Controllers\Api\DistrictController;
 use App\Http\Controllers\Api\MunicipalityController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LocalSupportController;
+
+
 
 
 
@@ -25,13 +29,18 @@ use App\Http\Controllers\Api\ProfileController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::post('/send-email', [MailController::class, 'sendEmail']);
 Route::post('/support-info', [SupportController::class, 'store']);
 Route::post('/subscribers', [SupportController::class, 'storeSubscribers']);
 Route::post('/profiles', [ProfileController::class, 'store']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/local-support/create', [LocalSupportController::class, 'store']);
+
 
 
 Route::get('/provinces', [ProvinceController::class, 'index']);
 Route::get('/districts/{id}', [DistrictController::class, 'index']);
 Route::get('/municipalities/{id}', [MunicipalityController::class, 'index']);
+Route::get('/local', [LocalSupportController::class, 'index']);
 

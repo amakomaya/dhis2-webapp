@@ -12,11 +12,24 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Route::get('/local-support', function () {
+//     return view('localsupport.create');
+//   });
+
+Route::middleware('auth:sanctum')->get('/local-support', function () {
+    return view('localsupport.create');
+});
+
+
+  
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
-
 
 
 
