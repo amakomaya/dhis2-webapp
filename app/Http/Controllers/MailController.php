@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Mail\ActivationEmail;
 use App\Mail\DataEmail;
 use App\Mail\ProfileEmail;
+use App\Mail\LocalSupportEmail;
+use App\Mail\LocalSupportDeleteEmail;
 use App\Models\User;
+use App\Models\LocalSupport;
+
 use Illuminate\Support\Facades\Crypt;
 
 
@@ -64,5 +68,34 @@ class MailController extends Controller
 
     }
 
+    public function sendLocalSupportEmail(Request $request)
+    {
+        // $data = json_decode($request->getContent(), true);
+        $email = $request->input('email');
+        $fname = $request->input('fmname');
+        $lname = $request->input('lname');
+        $phone =  $request->input('phone');
+        // dd($phone);
+        $anotherEmail = 'kripa@amakomaya.com'; 
+        $ccEmails = 'abc@gmail.com';
+        // $anotherEmail = 'rmchndrapdl@gmail.com'; 
+        // $ccEmails = 'dhis2.amakomaya@gmail.com';
+        Mail::to($anotherEmail) ->cc($ccEmails)->send(new LocalSupportEmail($email,$fname,$lname,$phone)); 
+
+    }
+
+    public function sendDeletClientEmail(LocalSupport $data)
+    {
+        $email = $data->email;
+        $fname = $data->fmname;
+        $lname = $data->lname;
+        $phone =  $data->phone;
+        $anotherEmail = 'kripa@amakomaya.com'; 
+        $ccEmails = 'abc@gmail.com';
+        // $anotherEmail = 'rmchndrapdl@gmail.com'; 
+        // $ccEmails = 'dhis2.amakomaya@gmail.com';
+        Mail::to($anotherEmail) ->cc($ccEmails)->send(new LocalSupportDeleteEmail($email,$fname,$lname,$phone)); 
+
+    }
     
 }

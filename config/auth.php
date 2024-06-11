@@ -39,7 +39,11 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            // 'driver' => 'sanctum',
+            // 'provider' => 'users',
         ],
+
+       
         
     ],
 

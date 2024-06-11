@@ -1,6 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LocalSupportController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('localsupport.create');
 //   });
 
-Route::middleware('auth:sanctum')->get('/local-support', function () {
-    return view('localsupport.create');
-});
+
+
+
+
+// Route::middleware('auth:sanctum')->get('/list', function () {
+//     return view('localsupport.list');
+// });
 
 
   
@@ -30,6 +38,9 @@ Route::get('/login', function () {
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
+
+// Route::get('/local-support/edit/{token}', [LocalSupportController::class, 'editForm']);
+
 
 
 

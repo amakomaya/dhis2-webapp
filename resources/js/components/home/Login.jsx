@@ -1,12 +1,15 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState,useContext  } from 'react';
 import { toast } from 'react-toastify';
 import Navbar2 from '../Registration/Navbar2.jsx';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../Localsupport/AuthContext.jsx';
+
 const Login = () => {  
     const navigate = useNavigate();
+    const { setAuth } = useContext(AuthContext);
         const [user, setUser] = useState({
         username: '',
         password: '',
@@ -49,11 +52,10 @@ const Login = () => {
         })
         .then(response => {
             if (response.status === 200) {
-                // Store token in local storage
+                const token = response.data.token;
                 localStorage.setItem('token', response.data.token);
-                console.log('token', response.data.token);
+                setAuth({ token });
                 navigate('/local-support');             
-                //    window.location.href = '/local-support';
             } else {
                 toast.error('Failed to log in');
             }

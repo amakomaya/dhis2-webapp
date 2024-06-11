@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../Registration/Registration.css';
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
-import CryptoJS from 'crypto-js';
 import axios from 'axios';
 import templateFile from '../assets/template.xlsx';
 import pdfTemplate from '../assets/Sample.pdf';
@@ -74,36 +73,6 @@ function Create() {
         return emailRegex.test(email);
     };
 
-
-
-    // const handleInputChange = (e) => {
-    //     const { name, value, files } = e.target;
-    
-    //     if (files) {
-    //         const file = files[0];
-    //         console.log('File selected:', file);
-    //         setUserr((prevUserr) => {
-    //             console.log('Updating state with file:', file);
-    //             return {
-    //                 ...prevUserr,
-    //                 [name]: file
-    //             };
-    //         });
-    //     } else {
-    //         setUserr((prevUserr) => {
-    //             console.log('Updating state with value:', value);
-    //             return {
-    //                 ...prevUserr,
-    //                 [name]: value
-    //             };
-    //         });
-    //     }
-    
-    //     setError((prevError) => ({
-    //         ...prevError,
-    //         [name]: ''
-    //     }));
-    // };
 
     const handleInputChange = (e) => {
         const { name, value, files } = e.target;
@@ -177,6 +146,16 @@ function Create() {
             return;
         }
 
+        if (userr.details&& userr.details.type !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+            setError((prevErrors) => ({ ...prevErrors, details: 'Please upload a valid xlsx file' }));
+            return;
+        }
+    
+        if (userr.letter && userr.letter.type !== 'application/pdf') {
+            setError((prevErrors) => ({ ...prevErrors, letter: 'Please upload a valid pdf file' }));
+            return;
+        }
+    
         try {
 
             var payload={}
@@ -194,18 +173,18 @@ function Create() {
 
 
             
-            console.log(payload);
             axios.post('api/local-support/create',payload, {
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data',
                 }
             })
             .then(response => {
+              
                 if (response.status === 200) {
                     toast.success(
                         <div>
                             <strong>Form Submission Confirmation:Stay Tuned for Updates!</strong><br/><br/>
-                            <p> Thank you for completing the form. We have received your request and will be in touch shortly. Please keep an eye on your email and phone for further communication. Have a great day!</p>
+                            <p> Thank you for completing the form. We have received your request and will be in touch shortly. Have a great day!</p>
                         </div>
                     );
                     setUserr({
@@ -218,8 +197,8 @@ function Create() {
                         tole: '',
                         phone: '',
                         email: '',
-                        letter:null,
-                        hfdetails:null
+                        letter:'',
+                        hfdetails:'null'
                     })
             
                     setError({
@@ -232,10 +211,12 @@ function Create() {
                         tole: '',
                         phone: '',
                         email: '',
-                        letter:null,
-                        hfdetails:null
+                        letter:'',
+                        hfdetails:''
                     })
-                } else {
+                }
+               
+                 else {
                     console.error('Failed to send email');
                 }
             })
@@ -245,6 +226,7 @@ function Create() {
             
         } catch (error) {
             console.error('Error:', error);
+            toast.error('An error occurred while submitting the form. Please try again later.');
         }
     }
     // -----------------------------------
@@ -337,14 +319,14 @@ function Create() {
                                 <div className="mb-2">
                                     
                                 <div className="d-flex justify-content-end mb-3">
-                                    <button className="btn btn-primary me-2" onClick={downloadSampleFile}>Sample letter</button>
-                                    <button className="btn btn-primary" onClick={downloadPdfSampleFile}>Sample details </button>
+                                    <button className="btn btn-primary me-2" onClick={downloadPdfSampleFile}>Sample letter</button>
+                                    <button className="btn btn-primary" onClick={downloadSampleFile}>Sample details </button>
                                  </div>
 
                                     <div className="row g-2">
                                         {/* First and Middle name */}
                                         <div className="col-sm-12">
-                                            <small>First and Middle Name <span className="text-danger">*</span></small>
+                                            <small>Responsible Person's Name <span className="text-danger">*</span></small>
                                             <input
                                                 type="text"
                                                 className={`form-control custom-reg-form ${error.fmname ? 'is-invalid' : ''}`}
@@ -357,7 +339,7 @@ function Create() {
 
                                         {/* Last name */}
                                         <div className="col-sm-12">
-                                            <small>Last Name <span className="text-danger">*</span></small>
+                                            <small>Responsible Person's Last Name <span className="text-danger">*</span></small>
                                             <input
                                                 type="text"
                                                 className={`form-control custom-reg-form ${error.lname ? 'is-invalid' : ''}`}
@@ -530,7 +512,8 @@ function Create() {
                                             <input
                                                 type="file"
                                                 name="letter"
-                                                className="form-control" 
+                                                className={`form-control custom-reg-form ${error.letter ? 'is-invalid' : ''}`}
+                                                accept=".pdf"
                                                 onChange={handleInputChange}
                                             />
                                             {error.letter && <div id="name-error" className="invalid-feedback">{error.letter}</div>}
@@ -546,7 +529,8 @@ function Create() {
                                             <input
                                                 type="file"
                                                 name="details"
-                                                className="form-control"
+                                                accept=".xlsx"
+                                                className={`form-control custom-reg-form ${error.details ? 'is-invalid' : ''}`}
                                                 onChange={handleInputChange}
                                             />
                                             {error.details && <div id="name-error" className="invalid-feedback">{error.details}</div>}

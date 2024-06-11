@@ -25,8 +25,11 @@ const Navbar = () =>{
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
                             <li className="nav-item">
-                                {/* <a className="nav-link px-2" aria-current="page" href="#why">Why?</a> */}
-                            </li>                            
+                                <a className="nav-link px-2" aria-current="page" href="/local-support">create</a>
+                            </li>     
+                            <li className="nav-item">
+                                <a className="nav-link px-2" aria-current="page" href="/list">list</a>
+                            </li>                         
                         </ul>
                     </div>
                 </div>

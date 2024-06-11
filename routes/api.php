@@ -35,12 +35,14 @@ Route::post('/support-info', [SupportController::class, 'store']);
 Route::post('/subscribers', [SupportController::class, 'storeSubscribers']);
 Route::post('/profiles', [ProfileController::class, 'store']);
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
 Route::post('/local-support/create', [LocalSupportController::class, 'store']);
+Route::delete('/del/{id}', [LocalSupportController::class, 'delete']); 
 
 
 
 Route::get('/provinces', [ProvinceController::class, 'index']);
 Route::get('/districts/{id}', [DistrictController::class, 'index']);
 Route::get('/municipalities/{id}', [MunicipalityController::class, 'index']);
-Route::get('/local', [LocalSupportController::class, 'index']);
-
+Route::get('/local-support/list', [LocalSupportController::class, 'show']);
