@@ -9,8 +9,6 @@ import axios from 'axios';
 import templateFile from '../assets/Health_facility_details.xlsx';
 import pdfTemplate from '../assets/sample-letter-for-local-bodies.pdf';
 
-
-
 function Create() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
