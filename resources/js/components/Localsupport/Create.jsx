@@ -6,8 +6,8 @@ import '../Registration/Registration.css';
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import templateFile from '../assets/template.xlsx';
-import pdfTemplate from '../assets/Sample.pdf';
+import templateFile from '../assets/Health_facility_details.xlsx';
+import pdfTemplate from '../assets/sample-letter-for-local-bodies.pdf';
 
 
 
@@ -282,7 +282,7 @@ function Create() {
     const downloadSampleFile = () => {
         const link = document.createElement('a');
         link.href = templateFile;
-        link.download = 'template.xlsx';
+        link.download = 'Health_facility_details.xlsx';
         link.target = '_blank';
         document.body.appendChild(link);
         link.click();
@@ -296,7 +296,7 @@ function Create() {
             const url = window.URL.createObjectURL(new Blob([blob]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'Sample.pdf');
+            link.setAttribute('download', 'sample-letter-for-local-bodies.pdf');
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -467,17 +467,16 @@ function Create() {
 
                                 <div className="mb-2">
                                     <div className="row g-2">
-                                        {/* Phone */}
                                         <div className="col-md-12">
                                             <small>Phone <span className="text-danger">*</span></small>
                                           
-                                                (<input
+                                                <input
                                                     type="text"
                                                     className={`form-control custom-reg-form ${error.phone ? 'is-invalid' : ''}`}
                                                     placeholder='9xxxxxxxxx'
                                                     name='phone' value={userr.phone}
                                                     onChange={handleInputChange}
-                                                />) :
+                                                /> 
                                                 
                                         
                                             {error.phone && <div id="name-error" className="invalid-feedback">{error.phone}</div>}
@@ -508,7 +507,7 @@ function Create() {
                                 <div className="mb-2">
                                     <div className="row g-2">
                                         <div className="col-md-12">
-                                            <small>Letter from LLG <span className="text-danger">*</span></small>
+                                            <small>Letter from LLG <span className="text-danger">*(Please upload only pdf file)</span></small>
                                             <input
                                                 type="file"
                                                 name="letter"
@@ -525,7 +524,7 @@ function Create() {
                                 <div className="mb-2">
                                     <div className="row g-2">
                                         <div className="col-md-12">
-                                            <small>Health facility details <span className="text-danger">*</span></small>
+                                            <small>Health facility details <span className="text-danger">*(Please upload only xlsx file)</span></small>
                                             <input
                                                 type="file"
                                                 name="details"
@@ -541,10 +540,7 @@ function Create() {
 
                                 <div className="mb-4 text-center">
                                     {
-                                        // (12345)
-                                        //     ?
-                                        //     <button type="submit" className="btn btn-primary btn-design">Request Demo</button>
-                                        //     :
+                                       
                                             <div>
                                                 <button type="submit" className="btn btn-primary btn-design mt-3">Submit</button>
                                             </div>

@@ -75,12 +75,14 @@ class MailController extends Controller
         $fname = $request->input('fmname');
         $lname = $request->input('lname');
         $phone =  $request->input('phone');
-        // dd($phone);
-        $anotherEmail = 'kripa@amakomaya.com'; 
-        $ccEmails = 'abc@gmail.com';
-        // $anotherEmail = 'rmchndrapdl@gmail.com'; 
-        // $ccEmails = 'dhis2.amakomaya@gmail.com';
-        Mail::to($anotherEmail) ->cc($ccEmails)->send(new LocalSupportEmail($email,$fname,$lname,$phone)); 
+        $letterFileName = $request->input('letter');  
+        $hfdetailsFileName = $request->input('hfdetails');
+        // $anotherEmail = 'kripa@amakomaya.com'; 
+        // $ccEmails = 'abc@gmail.com';
+        $anotherEmail = 'rmchndrapdl@gmail.com'; 
+        $ccEmails = 'dhis2.amakomaya@gmail.com';
+
+        Mail::to($anotherEmail)->cc($ccEmails)->send(new LocalSupportEmail($email, $fname, $lname, $phone, $letterFileName, $hfdetailsFileName)); 
 
     }
 

@@ -71,6 +71,7 @@ class LocalSupportController extends Controller
 
 
             //Handle file uploads
+            $letterFileName = null;
             if ($request->hasFile('letter')) {
                 $letter = $request->file('letter');
                 $letterFileName = time() . '_' . $letter->getClientOriginalName();
@@ -78,6 +79,7 @@ class LocalSupportController extends Controller
                 $data['letter'] = $letterFileName;
             }
 
+            $hfdetailsFileName = null;
             if ($request->hasFile('hfdetails')) {
                 $hfdetails = $request->file('hfdetails');
                 $hfdetailsFileName = time() . '_' . $hfdetails->getClientOriginalName();
@@ -86,6 +88,7 @@ class LocalSupportController extends Controller
             }
           
             $local_support = LocalSupport::updateOrCreate($data);
+            $request->merge(['letter' => $letterFileName, 'hfdetails' => $hfdetailsFileName]); 
             $sendMail = new MailController();
             $sendMail->sendLocalSupportEmail($request);
 

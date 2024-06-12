@@ -54,7 +54,7 @@ const List = () => {
                   <th>Province</th>
                   <th>District</th>
                   <th>Municupality</th>
-                  <th>Action</th>
+                  {/* <th>Action</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -66,8 +66,7 @@ const List = () => {
                     <td>{user.province_name}</td>
                     <td>{user.district_name}</td>
                     <td>{user.municipality_name}</td>
-                    <td>
-                      {/* Buttons for actions */}
+                    {/* <td>
                       <div>
                         <button className="btn btn-primary btn-sm" type="button" title="Edit" onClick={() => showForm(user.token)}>
                         Edit
@@ -78,7 +77,7 @@ const List = () => {
                         Delete   
                        </button>
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>

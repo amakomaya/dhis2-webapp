@@ -13,25 +13,23 @@ class LocalSupportEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
     public $email;
-     public $fname;
-     public  $lname;
-     public $phone; 
+    public $fname;
+    public $lname;
+    public $phone;
+    public $letter;
+    public $hfdetails;
 
-    public function __construct( $email, $fname, $lname, $phone)
+    public function __construct($email, $fname, $lname, $phone, $letter = null, $hfdetails = null)
     {
         $this->email = $email;
         $this->fname = $fname;
         $this->lname = $lname;
         $this->phone = $phone;
+        $this->letter = $letter;
+        $this->hfdetails = $hfdetails;
     }
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -39,20 +37,28 @@ class LocalSupportEmail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function build()
     {
-        return $this->view('emails.localsupportcreate')
-                    ->subject('Local Support Client Information')
-                    ->with([
-                        'email' =>$this->email,
-                        'fname' => $this->fname,
-                        'lname' => $this->lname,
-                        'phone'=> $this->phone,
-                    ]);
+        $email = $this->view('emails.localsupportcreate')
+                      ->subject('Local Support Client Information')
+                      ->with([
+                          'email' => $this->email,
+                          'fname' => $this->fname,
+                          'lname' => $this->lname,
+                          'phone' => $this->phone,
+                      ]);
+
+        if ($this->letter) {
+            $email->attach(storage_path('app/public/uploads/' . $this->letter));
+        }
+
+        if ($this->hfdetails) {
+            $email->attach(storage_path('app/public/uploads/' . $this->hfdetails));
+        }
+
+        return $email;
     }
+
     public function content(): Content
     {
         return new Content(
@@ -60,11 +66,6 @@ class LocalSupportEmail extends Mailable
         );
     }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
     public function attachments(): array
     {
         return [];

@@ -26,7 +26,7 @@ const routes = [
       { path: '/login', element: <Login /> },
       { path: '/local-support', element: <ProtectedRoute element={<LocalSupport />} /> },
       { path: '/list', element: <ProtectedRoute element={<List />} /> },
-      { path: '/local-support/edit/:token', element: <ProtectedRoute element={<LocalSupport />} /> }
+      // { path: '/local-support/edit/:token', element: <ProtectedRoute element={<LocalSupport />} /> }
     ]
   }
 ];
