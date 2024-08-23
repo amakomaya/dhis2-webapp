@@ -3,6 +3,8 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import erecordImg from '../assets/dhis2-app-icon.-erecord.png';
+
 
 const Products = () => {
     useEffect(() => {
@@ -24,7 +26,12 @@ const Products = () => {
                                 <div className="card">
                                     <div className="card-body text-center">
                                         {/* <i className="bi bi-pie-chart"></i> */}
-                                        <h5 className="card-title mt-3">EHMIS</h5>
+                                       <a href='https://community.dhis2mis.org/d/2-access-the-demo-dhis2-hmis-tools' target='_blank'> 
+                                            <img src={erecordImg} className="img-fluid shadow" alt="" />
+                                        </a>
+                                        <h5 className="card-title mt-3 " >EHMIS</h5>
+
+
                                     </div>
                                 </div>
                             </div>
