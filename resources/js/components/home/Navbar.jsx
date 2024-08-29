@@ -65,6 +65,10 @@ const Navbar = () => {
                             </div>
                             </li>
 
+                            <li className="nav-item">
+                                <a className="nav-link px-3" href="https://community.dhis2mis.org/" target="_blank">Community</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
