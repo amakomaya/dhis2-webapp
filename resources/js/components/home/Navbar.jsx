@@ -42,6 +42,29 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <a className="nav-link px-3" href="#contact-us">Support</a>
                             </li>
+                              <li className="nav-item">
+                            <div className="dropdown">
+                                <button
+                                className="btn nav-link px-3"
+                                type="button"
+                                id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" 
+                                aria-expanded="false"
+                                >
+                                Resources
+                                </button>
+                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a className="dropdown-item" href="https://github.com/amakomaya/resources/blob/master/hmis/eRecord.md" target='_blank'>
+                                    eRecord
+                                </a>
+                                <a className="dropdown-item" href="https://github.com/amakomaya/resources/blob/master/hmis/dhis2-android-app.md" target='_blank'>
+                                    Android App
+                                </a>
+                                
+                                </div>
+                            </div>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
