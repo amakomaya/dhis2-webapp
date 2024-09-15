@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logoImg from "../assets/logo_5.png";
+import logoImg from "../assets/logo.png";
 const Navbar = () => {
 
     const [sticky, setSticky] = useState(false)

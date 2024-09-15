@@ -4,6 +4,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import erecordImg from '../assets/dhis2-app-icon.-erecord.png';
+import eCardImg from '../assets/dhis_eCard_logo.png';
+
 
 
 const Products = () => {
@@ -34,6 +36,47 @@ const Products = () => {
 
                                     </div>
                                 </div>
+
+                                
+                            </div>
+                            <div className="col-sm-12 col-md-4 col-lg-3 col-12">
+                                <div className="card">
+                                    <div className="card-body text-center">
+                                        {/* <i className="bi bi-pie-chart"></i> */}
+                                       <a href='https://community.dhis2mis.org/d/2-access-the-demo-dhis2-hmis-tools' target='_blank'> 
+                                            <img src={eCardImg} className="img-fluid shadow" alt="" />
+                                        </a>
+                                        <h5 className="card-title mt-3 " >ECARD</h5>
+
+
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+
+                            <div className="col-sm-12 col-md-4 col-lg-3 col-12">
+                                <div className="card">
+                                    <div className="card-body text-center">
+                                        {/* <i className="bi bi-pie-chart"></i> */}
+                                       {/* <a href='https://community.dhis2mis.org/d/2-access-the-demo-dhis2-hmis-tools' target='_blank'> 
+                                            <img src={eCardImg} className="img-fluid shadow" alt="" />
+                                        </a> */}
+                                        <a href='https://community.dhis2mis.org/d/2-access-the-demo-dhis2-hmis-tools' target='_blank'> 
+                                            <h4>Tracker to Aggregate 
+                                            <br/>
+                                            <br/>
+                                            AD to BS</h4>
+
+                                        </a>
+                                        
+                                        <h5 className="card-title mt-3 " >DATA EXCHANGE</h5>
+
+
+                                    </div>
+                                </div>
+
+                                
                             </div>
                             {/* <div className="col-sm-12 col-md-4 col-lg-3 col-12">
                                 <div className="card">

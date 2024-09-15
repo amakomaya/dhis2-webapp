@@ -6,6 +6,8 @@ import Navbar from "./Navbar";
 import PlanSection from "./PlanSection";
 import SupportSection from "./SupportSection";
 import WhySection from "./WhySection";
+import Gallery from "./Gallery";
+
 
 const Home = () => {
 
@@ -19,6 +21,7 @@ const Home = () => {
             <FAQSection />
             <SupportSection />
             <Products/>
+            <Gallery/>
             
            
         </>

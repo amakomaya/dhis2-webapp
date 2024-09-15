@@ -5,7 +5,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-SzmIECpb.js",
+    "file": "assets/app-ax_pPqzX.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -14,8 +14,27 @@
     ],
     "assets": [
       "assets/dhis2-app-icon.-erecord-D8kUj4Nb.png",
-      "assets/logo_5-9upUL9ev.png",
+      "assets/dhis_eCard_logo-cdjVEcEs.png",
+      "assets/logo-BocDZhMg.png",
       "assets/dashboard2-BAV-KsRC.png",
+      "assets/dhis_version41-pqx4DfJh.png",
+      "assets/erecordPrograms-BHVlt3KP.png",
+      "assets/dhisOverview-Dt4lnjG6.png",
+      "assets/erecordEnrollment-CjQU85Bg.png",
+      "assets/nutrition-medlvNEW.png",
+      "assets/image1-dypdNGqz.png",
+      "assets/image2-DKwCgjzv.png",
+      "assets/image3-8XZhI9LD.png",
+      "assets/Image4-qcqb_43C.png",
+      "assets/Image5-BFkY0b72.png",
+      "assets/Image6-mOD8TdeE.png",
+      "assets/Image7-D3x0qygn.png",
+      "assets/Image8-DSQJH6JA.png",
+      "assets/image9-DbQ93HYv.jpeg",
+      "assets/image10-FBKzwOOn.jpeg",
+      "assets/periodSelector-9gYsADjV.png",
+      "assets/apps-Pkijt9R1.png",
+      "assets/logo_5-D14Ag5oV.png",
       "assets/Health_facility_details-CCVoNnum.xlsx",
       "assets/sample-letter-for-local-bodies-CpezX8Du.pdf"
     ]
@@ -23,6 +42,30 @@
   "resources/js/components/assets/Health_facility_details.xlsx": {
     "file": "assets/Health_facility_details-CCVoNnum.xlsx",
     "src": "resources/js/components/assets/Health_facility_details.xlsx"
+  },
+  "resources/js/components/assets/Image4.png": {
+    "file": "assets/Image4-qcqb_43C.png",
+    "src": "resources/js/components/assets/Image4.png"
+  },
+  "resources/js/components/assets/Image5.png": {
+    "file": "assets/Image5-BFkY0b72.png",
+    "src": "resources/js/components/assets/Image5.png"
+  },
+  "resources/js/components/assets/Image6.png": {
+    "file": "assets/Image6-mOD8TdeE.png",
+    "src": "resources/js/components/assets/Image6.png"
+  },
+  "resources/js/components/assets/Image7.png": {
+    "file": "assets/Image7-D3x0qygn.png",
+    "src": "resources/js/components/assets/Image7.png"
+  },
+  "resources/js/components/assets/Image8.png": {
+    "file": "assets/Image8-DSQJH6JA.png",
+    "src": "resources/js/components/assets/Image8.png"
+  },
+  "resources/js/components/assets/apps.png": {
+    "file": "assets/apps-Pkijt9R1.png",
+    "src": "resources/js/components/assets/apps.png"
   },
   "resources/js/components/assets/dashboard2.png": {
     "file": "assets/dashboard2-BAV-KsRC.png",
@@ -32,9 +75,61 @@
     "file": "assets/dhis2-app-icon.-erecord-D8kUj4Nb.png",
     "src": "resources/js/components/assets/dhis2-app-icon.-erecord.png"
   },
+  "resources/js/components/assets/dhisOverview.png": {
+    "file": "assets/dhisOverview-Dt4lnjG6.png",
+    "src": "resources/js/components/assets/dhisOverview.png"
+  },
+  "resources/js/components/assets/dhis_eCard_logo.png": {
+    "file": "assets/dhis_eCard_logo-cdjVEcEs.png",
+    "src": "resources/js/components/assets/dhis_eCard_logo.png"
+  },
+  "resources/js/components/assets/dhis_version41.png": {
+    "file": "assets/dhis_version41-pqx4DfJh.png",
+    "src": "resources/js/components/assets/dhis_version41.png"
+  },
+  "resources/js/components/assets/erecordEnrollment.png": {
+    "file": "assets/erecordEnrollment-CjQU85Bg.png",
+    "src": "resources/js/components/assets/erecordEnrollment.png"
+  },
+  "resources/js/components/assets/erecordPrograms.png": {
+    "file": "assets/erecordPrograms-BHVlt3KP.png",
+    "src": "resources/js/components/assets/erecordPrograms.png"
+  },
+  "resources/js/components/assets/image1.png": {
+    "file": "assets/image1-dypdNGqz.png",
+    "src": "resources/js/components/assets/image1.png"
+  },
+  "resources/js/components/assets/image10.jpeg": {
+    "file": "assets/image10-FBKzwOOn.jpeg",
+    "src": "resources/js/components/assets/image10.jpeg"
+  },
+  "resources/js/components/assets/image2.png": {
+    "file": "assets/image2-DKwCgjzv.png",
+    "src": "resources/js/components/assets/image2.png"
+  },
+  "resources/js/components/assets/image3.png": {
+    "file": "assets/image3-8XZhI9LD.png",
+    "src": "resources/js/components/assets/image3.png"
+  },
+  "resources/js/components/assets/image9.jpeg": {
+    "file": "assets/image9-DbQ93HYv.jpeg",
+    "src": "resources/js/components/assets/image9.jpeg"
+  },
+  "resources/js/components/assets/logo.png": {
+    "file": "assets/logo-BocDZhMg.png",
+    "src": "resources/js/components/assets/logo.png"
+  },
   "resources/js/components/assets/logo_5.png": {
-    "file": "assets/logo_5-9upUL9ev.png",
+    "file": "assets/logo_5-D14Ag5oV.png",
     "src": "resources/js/components/assets/logo_5.png"
+  },
+  "resources/js/components/assets/nutrition.png": {
+    "file": "assets/nutrition-medlvNEW.png",
+    "src": "resources/js/components/assets/nutrition.png"
+  },
+  "resources/js/components/assets/periodSelector.png": {
+    "file": "assets/periodSelector-9gYsADjV.png",
+    "src": "resources/js/components/assets/periodSelector.png"
   },
   "resources/js/components/assets/sample-letter-for-local-bodies.pdf": {
     "file": "assets/sample-letter-for-local-bodies-CpezX8Du.pdf",

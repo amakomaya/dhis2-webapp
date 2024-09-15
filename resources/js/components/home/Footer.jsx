@@ -119,8 +119,12 @@ function Footer() {
                                 <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                                     <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
                                     <p><i className="fas fa-home mr-3"></i> Kathmandu, Nepal</p>
-                                    <p><i className="fas fa-envelope mr-3"></i> dhis2@amakomaya.com, dhis2.amakomaya@gmail.com</p>
-                                    <p><i className="fas fa-phone mr-3"></i> + 977 01-4528090</p>
+                                    <p><i className="fas fa-envelope mr-3"></i> dhis2@amakomaya.com</p>
+                                    <p><i className="fas fa-envelope mr-3"></i> dhis2.amakomaya@gmail.com</p>
+
+                                    <p><i className="fas fa-phone mr-3"></i> 01-4528090</p>
+                                    <p><i className="fas fa-phone mr-3"></i> <a href="tel:+977 9851341921" style={{textDecoration:'none', color:'white'}}>  9851341921</a></p>
+
 
                                     <form onSubmit={submitData}> 
                                     <div className="input-group mb-3">
