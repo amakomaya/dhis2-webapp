@@ -5,7 +5,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-ax_pPqzX.js",
+    "file": "assets/app-DLBYB9WH.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -34,6 +34,7 @@
       "assets/image10-FBKzwOOn.jpeg",
       "assets/periodSelector-9gYsADjV.png",
       "assets/apps-Pkijt9R1.png",
+      "assets/education-B1a9zT3-.png",
       "assets/logo_5-D14Ag5oV.png",
       "assets/Health_facility_details-CCVoNnum.xlsx",
       "assets/sample-letter-for-local-bodies-CpezX8Du.pdf"
@@ -86,6 +87,10 @@
   "resources/js/components/assets/dhis_version41.png": {
     "file": "assets/dhis_version41-pqx4DfJh.png",
     "src": "resources/js/components/assets/dhis_version41.png"
+  },
+  "resources/js/components/assets/education.png": {
+    "file": "assets/education-B1a9zT3-.png",
+    "src": "resources/js/components/assets/education.png"
   },
   "resources/js/components/assets/erecordEnrollment.png": {
     "file": "assets/erecordEnrollment-CjQU85Bg.png",
