@@ -7,7 +7,7 @@ import PlanSection from "./PlanSection";
 import SupportSection from "./SupportSection";
 import WhySection from "./WhySection";
 import Gallery from "./Gallery";
-
+import DhisFor from "./DhisFor";
 
 const Home = () => {
 
@@ -21,6 +21,7 @@ const Home = () => {
             <FAQSection />
             <SupportSection />
             <Products/>
+            <DhisFor/>
             <Gallery/>
             
            
