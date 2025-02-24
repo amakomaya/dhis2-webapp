@@ -10,6 +10,8 @@ import DataPrivacy from './home/DataPrivacy.jsx';
 import Login from './home/Login.jsx';
 import LocalSupport from './Localsupport/Create.jsx';
 import List from './Localsupport/List.jsx';
+import Newsletter from './Localsupport/Newsletter.jsx';
+import SendNewsletter from './Localsupport/SendNewsletter.jsx';
 import { AuthProvider } from './Localsupport/AuthContext.jsx';
 import ProtectedRoute from './Localsupport/ProtectedRoute.jsx';
 
@@ -26,6 +28,10 @@ const routes = [
       { path: '/login', element: <Login /> },
       { path: '/local-support', element: <ProtectedRoute element={<LocalSupport />} /> },
       { path: '/list', element: <ProtectedRoute element={<List />} /> },
+      { path: '/newsletter', element: <ProtectedRoute element={<Newsletter />} /> },
+      { path: '/sendnewsletter', element: <ProtectedRoute element={<SendNewsletter />} /> },
+
+
       // { path: '/local-support/edit/:token', element: <ProtectedRoute element={<LocalSupport />} /> }
     ]
   }

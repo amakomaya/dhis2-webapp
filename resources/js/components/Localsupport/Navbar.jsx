@@ -29,7 +29,13 @@ const Navbar = () =>{
                             </li>     
                             <li className="nav-item">
                                 <a className="nav-link px-2" aria-current="page" href="/list">list</a>
-                            </li>                         
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link px-2" aria-current="page" href="/newsletter">newsletter</a>
+                            </li> 
+                            <li className="nav-item">
+                                <a className="nav-link px-2" aria-current="page" href="/sendnewsletter">send newsletter</a>
+                            </li>                           
                         </ul>
                     </div>
                 </div>

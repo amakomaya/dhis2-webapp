@@ -43,7 +43,8 @@ class DataEmail extends Mailable
     {
         return $this->subject('Data Email')
                     ->view('emails.data')
-                    ->with(['email' => $this->email, 'organizationType' => $this->organizationType]);    }
+                    ->with(['email' => $this->email, 'organizationType' => $this->organizationType]);    
+            }
 
     
     public function content(): Content
