@@ -20,21 +20,22 @@
 @endif
 
 {{-- Summary --}}
-<span style="color:#093371; font-weight: bold;">Summary:</span>
+<span style="color:#093371; font-weight: bold; margin-top:'5px';">Summary:</span>
 <span style="color: #000">{{ $summary }}</span>
 
 {{-- Description --}}
 <!-- {!! $description !!} -->
-<span style="color: #000">{{ $description }}</span>
+<span style="color: #000">{!! $description !!}
+</span>
 
 
 @if($is_upcoming_events_date)
 <span style="color: #093371; font-weight: bold; "> Upcoming Events: </span> 
-<ul>
-    <li><strong style="color: #093371;">Date:</strong ><span style="color: #000">{{ $is_upcoming_events_date }}</span></li>
-    <li><strong style="color: #093371;">Time:</strong > <span style="color: #000"> {{ $is_upcoming_events_time }}</span> </li>
-    <li><strong style="color: #093371;">Location:</strong> <span style="color: #000"> {{ $is_upcoming_events_location }}</span> </li>
-</ul>
+<br/>
+<strong style="color: #093371;">Date:</strong ><span style="color: #000"> {{ $is_upcoming_events_date }}</span><br/>
+<strong style="color: #093371;">Time:</strong > <span style="color: #000"> {{ $is_upcoming_events_time }}</span><br/>
+<strong style="color: #093371;">Location:</strong> <span style="color: #000"> {{ $is_upcoming_events_location }}</span>
+
 @endif
 
 @if($registration_link)
@@ -60,7 +61,7 @@ Join Meeting
                 <a href='https://amakomaya.com/' target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/128/1006/1006771.png" width="24">
                 </a> 
-                <a href='https://www.facebook.com/amakomaya2012' target="_blank">
+                <a href='https://www.facebook.com/dhis2mis' target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111393.png" width="24">
                 </a> 
                 <a href="https://www.instagram.com/amakomaya/" target="_blank">
@@ -69,7 +70,7 @@ Join Meeting
                 <a href="https://twitter.com/amakomaya" target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png" width="24">
                 </a> 
-                <a href="https://www.youtube.com/c/amakomaya" target="_blank">
+                <a href="https://www.youtube.com/@DHIS2MISNepal/videos" target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="24">
                 </a> 
             </p>

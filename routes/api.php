@@ -40,10 +40,14 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::post('/local-support/create', [LocalSupportController::class, 'store']);
+Route::delete('/del/{id}', [LocalSupportController::class, 'delete']); 
+
 Route::post('/newsletter', [NewsletterController::class, 'store']);
 Route::get('/newsletter/list', [NewsletterController::class, 'show']);
+Route::delete('/delete/{id}', [NewsletterController::class, 'delete']); 
 
-Route::delete('/del/{id}', [LocalSupportController::class, 'delete']); 
+
+Route::get('/newsletter/edit/{id}', [NewsletterController::class, 'editForm']);
 
 
 

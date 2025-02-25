@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DHIS 2 </title>
-    <link rel="icon" href="{{ asset('dhis_logo.png') }}"> 
+    <link rel="icon" href="{{ asset('logo.png') }}"> 
     <meta name="description" content="Discover a versatile data management solution for Nepal across diverse sectors with DHIS2. Sign up for free to set up a customized data management server, perfectly tailored to your organization's requirements." />
     <meta name="keywords" content="DHIS2, Nepal, health, data" />
     <meta name="author" content="Amakomaya"/>

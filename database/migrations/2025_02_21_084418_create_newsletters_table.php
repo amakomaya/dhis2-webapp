@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('newsletters', function (Blueprint $table) {
             $table->id();
             $table->string('newsletter_id')->unique();
+            $table->varchar('encrypted_newsletter_id',255);
             $table->string('subject');
             $table->string('top_banner')->nullable();
             $table->date('date');

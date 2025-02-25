@@ -22,6 +22,11 @@ const SendNewsletter = () => {
       });
   };
 
+  const showForm = (id) => {
+    window.open(`/newsletter/${id}` , '_blank');
+  };
+
+
 
   const sendNewsletter = (newsletter_id) => {
     axios.get(`api/send-newsletter/${newsletter_id}`)
@@ -73,7 +78,14 @@ const SendNewsletter = () => {
                         <button className="btn btn-primary btn-sm" type="button" title="Edit" onClick={() => sendNewsletter(user.newsletter_id)}>
                         Send Newsletter
                         </button>
+                      
                       </div>
+                      <div className="p-1">
+                        <button className="btn btn-primary btn-sm" type="button" title="Edit" onClick={() => showForm(user.encrypted_newsletter_id)}>
+                        Edit
+                        </button>
+                      </div>
+                    
                     </td>
                     
                   </tr>

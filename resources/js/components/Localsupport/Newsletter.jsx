@@ -7,9 +7,11 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import { useParams } from 'react-router-dom';
 
 function Newsletter() {
+    const { encryptedId } = useParams(); 
+
      const [user, setuser] = useState({
             newsletter_id: '',
             subject: '',
@@ -51,124 +53,93 @@ function Newsletter() {
             [name]: ''
         }));
     };
+
+    useEffect(() => {
+        if (encryptedId) {
+            axios.get(`/api/newsletter/edit/${encodeURIComponent(encryptedId)}`)
+                .then(response => {
+                    setuser(response.data);
+                })
+                .catch(error => {
+                    console.error("Error fetching newsletter:", error);
+                });
+        }
+    }, [encryptedId, axios]);
     
-    const handleEditorChange = (event, editor) => {
+  
+      const handleEditorChange = (event, editor) => {
         const data = editor.getData();
-        setUser((prevUser) => ({
+        setuser(prevUser => ({
             ...prevUser,
             description: data
         }));
     };
-
-    const handleForm = (e) => {
-        // setStatus(true)
-        e.preventDefault();
-        if (user.newsletter_id === '') {
-            setError((preverror) => ({ ...preverror, newsletter_id: 'newsletter id is required' }));
-            return;
-        }
-        if (user.subject === '') {
-            setError((preverror) => ({ ...preverror, subject: 'subject is required' }));
-            return;
-        }
-        if (user.top_banner === '') {
-            setError((preverror) => ({ ...preverror, top_banner: 'top_banner is required' }));
-            return;
-        }
-       
-        if (user.date === '') {
-            setError((preverror) => ({ ...preverror, date: 'date is required' }));
-            return;
-        }
-
-        if (user.title === '') {
-            setError((preverror) => ({ ...preverror, title: 'title is required' }));
-            return;
-        }
-        if (user.image === '') {
-            setError((preverror) => ({ ...preverror, image: 'image is required' }));
-            return;
-        }
-        if (user.image_link === '') {
-            setError((preverror) => ({ ...preverror, image_link: 'image_link is required' }));
-            return;
-        }
-        if (user.summary === '') {
-            setError((preverror) => ({ ...preverror, summary: 'summary is required' }));
-            return;
-        }
-        if (user.description === '') {
-            setError((preverror) => ({ ...preverror, description: 'description is required' }));
-            return;
-        }
-
-
-            try {
-
-                var payload={}
-                payload.newsletter_id= user.newsletter_id,
-                payload.subject= user.subject,
-                payload.top_banner= user.top_banner,
-                payload.date= user.date,
-                payload.title= user.title,
-                payload.summary= user.summary,
-                payload.description= user.description,
-                payload.image= user.image,
-                payload.image_link=user.image_link,
-                payload.is_upcoming_events_date= user.is_upcoming_events_date,
-                payload.is_upcoming_events_time= user.is_upcoming_events_time,
-                payload.is_upcoming_events_location= user.is_upcoming_events_location,
-                payload.registration_link= user.registration_link,
-                payload.meeting_link= user.meeting_link,
-                
-                axios.post('api/newsletter',payload, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                })
-                .then(response => {
-                  
-                    if (response.status === 200) {
-                        toast.success(
-                            <div>
-                                <strong>Form Submission Confirmation!</strong><br/><br/>
-                            </div>
-                        );
-                        setuser({
-                            newsletter_id: '',
-                            subject: '',
-                            top_banner: '',
-                            date: '',
-                            title: '',
-                            image: '',
-                            image_link: '',
-                            summary: '',
-                            description: '',  
-                            is_upcoming_events_date:'',
-                            is_upcoming_events_time:'',
-                            registration_link:'',
-                            meeting_link:''
-                        })
-                
-                
-                    }
-                   
-                     else {
-                        console.error('Failed to send email');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-                
-            } catch (error) {
-                console.error('Error:', error);
-                toast.error('An error occurred while submitting the form. Please try again later.');
-            }
-      
     
-       
-    }
+
+    const handleForm = async (e) => {
+        e.preventDefault();
+    
+        // Validate required fields
+        const requiredFields = ['newsletter_id', 'subject', 'top_banner', 'date', 'title', 'image', 'image_link', 'summary', 'description'];
+        let hasError = false;
+    
+        requiredFields.forEach((field) => {
+            if (!user[field]) {
+                setError(prevError => ({ ...prevError, [field]: `${field} is required` }));
+                hasError = true;
+            }
+        });
+    
+        if (hasError) return;
+    
+        try {
+            const payload = {
+                newsletter_id: user.newsletter_id,
+                subject: user.subject,
+                top_banner: user.top_banner,
+                date: user.date,
+                title: user.title,
+                summary: user.summary,
+                description: user.description,
+                image: user.image,
+                image_link: user.image_link,
+                is_upcoming_events_date: user.is_upcoming_events_date,
+                is_upcoming_events_time: user.is_upcoming_events_time,
+                is_upcoming_events_location: user.is_upcoming_events_location,
+                registration_link: user.registration_link,
+                meeting_link: user.meeting_link,
+            };
+    
+            await axios.post('/api/newsletter', payload, {
+                headers: { 'Content-Type': 'application/json' }
+            });
+    
+            toast.success(<div><strong>Form Submission Successful!</strong></div>);
+    
+            // Reset form after submission
+            setuser({
+                newsletter_id: '',
+                subject: '',
+                top_banner: '',
+                date: '',
+                title: '',
+                image: '',
+                image_link: '',
+                summary: '',
+                description: '',
+                is_upcoming_events_date: '',
+                is_upcoming_events_time: '',
+                is_upcoming_events_location: '',
+                registration_link: '',
+                meeting_link: ''
+            });
+    
+        } catch (error) {
+            console.error('Error:', error);
+            toast.error('An error occurred while submitting the form.');
+        }
+    };
+    
     return (
         <>
             <Navbar />
@@ -306,18 +277,11 @@ function Newsletter() {
                                     <div className="row g-2">
                                         <div className="col-sm-12">
                                             <small>Description <span className="text-danger">*</span></small>
-                                            {/* <CKEditor
+                                            <CKEditor
                                                 editor={ClassicEditor}
                                                 data={user.description}
                                                 onChange={handleEditorChange}
-                                            /> */}
-                                            <textarea
-                                            className="form-control custom-reg-form"
-                                            placeholder="Enter description"
-                                            name="description"
-                                            value={user.description}
-                                            onChange={handleChange}
-                                        ></textarea>
+                                            />                     
                                             {error.description && <small className="text-danger">{error.description}</small>}
                                         </div>
                                     </div>

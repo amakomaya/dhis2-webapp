@@ -28,8 +28,11 @@ const routes = [
       { path: '/login', element: <Login /> },
       { path: '/local-support', element: <ProtectedRoute element={<LocalSupport />} /> },
       { path: '/list', element: <ProtectedRoute element={<List />} /> },
-      { path: '/newsletter', element: <ProtectedRoute element={<Newsletter />} /> },
+      // { path: '/newsletter', element: <ProtectedRoute element={<Newsletter />} /> },
       { path: '/sendnewsletter', element: <ProtectedRoute element={<SendNewsletter />} /> },
+      { path: '/newsletter/:encryptedId?', element: <ProtectedRoute element={<Newsletter />} /> },
+      
+      // { path: '/newsletter/edit/:id', element: <ProtectedRoute element={<Newsletter />} /> },
 
 
       // { path: '/local-support/edit/:token', element: <ProtectedRoute element={<LocalSupport />} /> }

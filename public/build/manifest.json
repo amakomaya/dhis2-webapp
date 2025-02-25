@@ -1,16 +1,16 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-DYB-Yv3V.css",
+    "file": "assets/app-zc-OmFo0.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DLBYB9WH.js",
+    "file": "assets/app-Cl1_6EOJ.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-Div41GFN.css"
+      "assets/app-Do0RqcH-.css"
     ],
     "assets": [
       "assets/dhis2-app-icon.-erecord-D8kUj4Nb.png",

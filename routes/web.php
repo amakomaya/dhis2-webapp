@@ -3,7 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocalSupportController;
-
+use App\Http\Controllers\NewsletterController;
 
 
 /*
@@ -40,6 +40,7 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 
 // Route::get('/local-support/edit/{token}', [LocalSupportController::class, 'editForm']);
+
 
 
 
