@@ -8,7 +8,7 @@ use App\Models\Newsletter;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewsletterMail;
 use Illuminate\Support\Facades\Crypt;
-
+use Illuminate\Support\Facades\Storage;
 
 
 class NewsletterController extends Controller
@@ -65,10 +65,10 @@ public function store(Request $request)
             'newsletter_id' => 'required|string',
             'encrypted_newsletter_id'=>'nullable|string',
             'subject' => 'required|string',
-            'top_banner' => 'required|string',
+            'top_banner' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'date' => 'required|date',
             'title' => 'required|string',
-            'image' => 'nullable|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image_link' => 'nullable|string',
             'summary' => 'nullable|string',
             'description' => 'nullable|string',
@@ -79,8 +79,21 @@ public function store(Request $request)
             'meeting_link' => 'nullable|url',
         ]);
 
-        $validatedData['encrypted_newsletter_id'] = Crypt::encrypt($validatedData['newsletter_id']);
+        if ($request->hasFile('top_banner')) {
+            $topBanner = $request->file('top_banner');
+            $topBannerName = time() . '_topbanner_' . $topBanner->getClientOriginalName();
+            $topBannerPath = $topBanner->storeAs('public/images', $topBannerName);
+            $validatedData['top_banner'] = Storage::url($topBannerPath);
+        }
 
+        // Handling image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_image_' . $image->getClientOriginalName();
+            $imagePath = $image->storeAs('public/images', $imageName);
+            $validatedData['image'] = Storage::url($imagePath);
+        }
+        $validatedData['encrypted_newsletter_id'] = Crypt::encrypt($validatedData['newsletter_id']);
         $newsletter = Newsletter::updateOrCreate(
             ['newsletter_id' => $validatedData['newsletter_id']], 
             $validatedData
@@ -101,6 +114,7 @@ public function store(Request $request)
     public function sendNewsletter($id)
     {
         $subscribers = Subscriber::all();
+        // $subscribers = ['shresthakritisha1@gmail'];
         $data = Newsletter::where('newsletter_id', $id)->first(); 
         foreach ($subscribers as $subscriber) {
             Mail::to($subscriber)->send(new NewsletterMail($data));
@@ -111,7 +125,7 @@ public function store(Request $request)
 
     public function show()
     {
-        $data = Newsletter::whereNull('deleted_at')->get();
+        $data = Newsletter::whereNull('deleted_at')->latest()->get();
         return response()->json($data);
     }
     

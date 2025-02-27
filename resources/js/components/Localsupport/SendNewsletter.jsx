@@ -40,8 +40,8 @@ const SendNewsletter = () => {
         }
     })
     .catch(error => {
-      console.error("Failed to delete", error);
-      alert("Failed to delete");
+      console.error("Failed to send newsletter", error);
+      alert("Failed to  send newsletter");
     });  
 };
 

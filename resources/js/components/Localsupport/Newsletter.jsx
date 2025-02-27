@@ -15,10 +15,10 @@ function Newsletter() {
      const [user, setuser] = useState({
             newsletter_id: '',
             subject: '',
-            top_banner: '',
+            top_banner: null,
             date: '',
             title: '',
-            image: '',
+            image: null,
             image_link: '',
             summary: '',
             description: '',  
@@ -74,6 +74,17 @@ function Newsletter() {
             description: data
         }));
     };
+    const handleFileChange = (e) => {
+        const { name, files } = e.target;
+        const file = files[0];
+    
+        setuser((prevUser) => ({
+            ...prevUser,
+            [name]: file,
+        }));
+    };
+    
+    
     
 
     const handleForm = async (e) => {
@@ -109,9 +120,10 @@ function Newsletter() {
                 registration_link: user.registration_link,
                 meeting_link: user.meeting_link,
             };
-    
+
             await axios.post('/api/newsletter', payload, {
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 'Content-Type': 'multipart/form-data',
+                }
             });
     
             toast.success(<div><strong>Form Submission Successful!</strong></div>);
@@ -120,10 +132,10 @@ function Newsletter() {
             setuser({
                 newsletter_id: '',
                 subject: '',
-                top_banner: '',
+                top_banner: null,
                 date: '',
                 title: '',
-                image: '',
+                image: null,
                 image_link: '',
                 summary: '',
                 description: '',
@@ -185,13 +197,15 @@ function Newsletter() {
                                     <div className="col-sm-12">
                                         <small>Top Banner <span className="text-danger">*</span></small>
                                         <input
-                                            type="text"
+                                            type="file"
                                             className="form-control custom-reg-form"
                                             placeholder="Enter Top Banner URL"
                                             name="top_banner"
-                                            value={user.top_banner}
-                                            onChange={handleChange}
+                                            onChange={handleFileChange}
                                         />
+                                        {user.top_banner && (
+                                            <small className="text-success">Selected File: {user.top_banner}</small>
+                                        )}
                                         {error.top_banner && <small className="text-danger">{error.top_banner}</small>}
 
                                     </div>
@@ -231,13 +245,15 @@ function Newsletter() {
                                     <div className="col-sm-12">
                                     <small>Image URL <span className="text-danger">*</span></small>
                                         <input
-                                            type="text"
+                                            type="file"
                                             className="form-control custom-reg-form"
                                             placeholder="Enter Image URL"
                                             name="image"
-                                            value={user.image}
-                                            onChange={handleChange}
+                                            onChange={handleFileChange}
                                         />
+                                           {user.image && (
+                                            <small className="text-success">Selected File: {user.image}</small>
+                                        )}
                                     {error.image && <small className="text-danger">{error.image}</small>}
                                     <div className="col-sm-12">
                                         <small>Image Link <span className="text-danger">*</span></small>

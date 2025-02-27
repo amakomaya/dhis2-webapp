@@ -2,10 +2,8 @@
 
 {{-- Clickable Top Banner --}}
 <a href="https://dhis2mis.org/" target="_blank">
-    <img src="{{ $top_banner }}" alt="Top Banner" style="width: 100%; height:100px; display: block;">
+<img src="{{ asset($top_banner) }}" alt="Top Banner" style="width: 100%; height:100px; display: block;">
 </a>
-
-<span style="color:#093371; font-weight: bold;"> Date: <span style="color: #000">{{ $date }}</span></span>
 
 {{-- Title --}}
 <span style="color: #093371; font-weight: bold; font-size:20px;"> {{ $title }} </span>
@@ -15,16 +13,14 @@
 {{-- Clickable Image --}}
 @if($image)
 <a href="{{ $image_link }}" target="_blank">
-    <img src="{{ $image }}" alt="Newsletter Image" style="width: 100%; display: block; border-radius: 8px;">
+<img src="{{ asset($image) }}" alt="Newsletter Image" style="width: 100%; display: block; border-radius: 8px;">
 </a>
 @endif
 
 {{-- Summary --}}
-<span style="color:#093371; font-weight: bold; margin-top:'5px';">Summary:</span>
 <span style="color: #000">{{ $summary }}</span>
 
 {{-- Description --}}
-<!-- {!! $description !!} -->
 <span style="color: #000">{!! $description !!}
 </span>
 
@@ -57,7 +53,7 @@ Join Meeting
     <tr>
         <td>
             <p><strong style="color: #093371; ">Connect with us:</strong></p>
-            <p style="display: flex;  gap: 8px;">
+            <p style="display: flex;  gap: 15px;">
                 <a href='https://amakomaya.com/' target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/128/1006/1006771.png" width="24">
                 </a> 
