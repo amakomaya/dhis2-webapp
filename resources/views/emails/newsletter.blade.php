@@ -53,30 +53,29 @@ Join Meeting
     <tr>
         <td>
             <p><strong style="color: #093371; ">Connect with us:</strong></p>
-            <p style="display: flex;  gap: 15px;">
-                <a href='https://amakomaya.com/' target="_blank">
+            <p style="display: flex; gap: 25px;">
+                <a href='https://dhis2mis.org/' target="_blank" style="width: 40px; display: inline-block;">
                     <img src="https://cdn-icons-png.flaticon.com/128/1006/1006771.png" width="24">
                 </a> 
-                <a href='https://www.facebook.com/dhis2mis' target="_blank">
+                <a href='https://www.facebook.com/dhis2mis' target="_blank" style="width: 40px; display: inline-block;">
                     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111393.png" width="24">
-                </a> 
-                <a href="https://www.instagram.com/amakomaya/" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="24">
-                </a> 
-                <a href="https://twitter.com/amakomaya" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png" width="24">
-                </a> 
-                <a href="https://www.youtube.com/@DHIS2MISNepal/videos" target="_blank">
+                </a>
+                <a href="https://www.linkedin.com/company/dhis2mis" target="_blank" style="width: 40px; display: inline-block;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png" width="24">
+                </a>
+                <a href="https://www.youtube.com/@DHIS2MISNepal/videos" target="_blank" style="width: 40px; display: inline-block;">
                     <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="24">
                 </a> 
             </p>
-            <img src="{{ asset('logo.png') }}" alt="Amakomaya Logo" style="width: 100px; margin-top: 10px;">
+            <img src="{{ asset('logo.png') }}" alt="Amakomaya Logo" style="width: 200px; margin-top: 10px;">
             <p><strong style="color:#093371">DHIS2MIS | Amakomaya</strong><br><span style="color:#000">Kathmandu, Nepal</span></p> 
-              <a href="https://dhis2mis.org/" style="display: inline-block; background-color: #008CCF; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+            <a href="https://dhis2mis.org/" style="display: inline-block; background-color: #008CCF; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
                 Explore DHIS2 Nepal
             </a>   
         </td>
     </tr>
 </table>
+
+
 
 @endcomponent

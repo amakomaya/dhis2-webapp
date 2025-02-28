@@ -5,7 +5,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BCTx0Z2-.js",
+    "file": "assets/app-CC9urPz3.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -35,7 +35,6 @@
       "assets/periodSelector-9gYsADjV.png",
       "assets/apps-Pkijt9R1.png",
       "assets/education-B1a9zT3-.png",
-      "assets/logo_5-D14Ag5oV.png",
       "assets/Health_facility_details-CCVoNnum.xlsx",
       "assets/sample-letter-for-local-bodies-CpezX8Du.pdf"
     ]
@@ -123,10 +122,6 @@
   "resources/js/components/assets/logo.png": {
     "file": "assets/logo-BocDZhMg.png",
     "src": "resources/js/components/assets/logo.png"
-  },
-  "resources/js/components/assets/logo_5.png": {
-    "file": "assets/logo_5-D14Ag5oV.png",
-    "src": "resources/js/components/assets/logo_5.png"
   },
   "resources/js/components/assets/nutrition.png": {
     "file": "assets/nutrition-medlvNEW.png",

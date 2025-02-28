@@ -203,9 +203,9 @@ function Newsletter() {
                                             name="top_banner"
                                             onChange={handleFileChange}
                                         />
-                                        {user.top_banner && (
+                                        {/* {user.top_banner && (
                                             <small className="text-success">Selected File: {user.top_banner}</small>
-                                        )}
+                                        )} */}
                                         {error.top_banner && <small className="text-danger">{error.top_banner}</small>}
 
                                     </div>
@@ -251,9 +251,9 @@ function Newsletter() {
                                             name="image"
                                             onChange={handleFileChange}
                                         />
-                                           {user.image && (
+                                           {/* {user.image && (
                                             <small className="text-success">Selected File: {user.image}</small>
-                                        )}
+                                        )} */}
                                     {error.image && <small className="text-danger">{error.image}</small>}
                                     <div className="col-sm-12">
                                         <small>Image Link <span className="text-danger">*</span></small>

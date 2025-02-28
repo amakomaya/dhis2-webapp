@@ -20,64 +20,45 @@ const List = () => {
         console.log(error);
       });
   };
-  const confirmDelete = (user) => {
-    window.confirm(`Delete ${user.fmname} ${user.lname}'s records. You won't be able to revert this!`) &&
-      axios.delete(`/api/del/${user.id}`)
-        .then(response => {
-          fetchData();
-          alert("Record deleted successfully");
-        })
-        .catch(error => {
-          console.error("Failed to delete", error);
-          alert("Failed to delete");
-        });
-  };
+  // const confirmDelete = (user) => {
+  //   window.confirm(`Delete ${user.fmname} ${user.lname}'s records. You won't be able to revert this!`) &&
+  //     axios.delete(`/api/del/${user.id}`)
+  //       .then(response => {
+  //         fetchData();
+  //         alert("Record deleted successfully");
+  //       })
+  //       .catch(error => {
+  //         console.error("Failed to delete", error);
+  //         alert("Failed to delete");
+  //       });
+  // };
 
-  const showForm = (token) => {
-    window.open('/local-support/edit/' + token, '_blank');
-  };
+  // const showForm = (token) => {
+  //   window.open('/local-support/edit/' + token, '_blank');
+  // };
 
 
   return (
     <>
       <Navbar />
-      <div className="container mt-4"> {/* Add margin top */}
-        <div className="row justify-content-center"> {/* Center the table horizontally */}
+      <div className="container mt-4"> 
+        <div className="row justify-content-center"> 
           <div className="col-md-12">
 
             <table className="table table-sm table-bordered table-hover dataTable_wrapper text-center dataTables-example">
               <thead className="thead-light">
                 <tr>
                   <th>S.N</th>
-                  <th>Name</th>
-                  <th>Phone</th>
-                  <th>Province</th>
-                  <th>District</th>
-                  <th>Municupality</th>
-                  {/* <th>Action</th> */}
+                  <th>Email</th>
+                  
                 </tr>
               </thead>
               <tbody>
                 {users.map((user, index) => (
                   <tr key={user.id}>
                     <td>{index + 1}</td>
-                    <td>{user.fmname} {user.lname}</td>
-                    <td>{user.phone}</td>
-                    <td>{user.province_name}</td>
-                    <td>{user.district_name}</td>
-                    <td>{user.municipality_name}</td>
-                    {/* <td>
-                      <div>
-                        <button className="btn btn-primary btn-sm" type="button" title="Edit" onClick={() => showForm(user.token)}>
-                        Edit
-                        </button>
-                      </div>
-                      <div className="p-1">
-                        <button className="btn btn-sm btn-danger" type="button" title="Delete" onClick={() => confirmDelete(user)}>
-                        Delete   
-                       </button>
-                      </div>
-                    </td> */}
+                    <td>{user.email}</td>
+                
                   </tr>
                 ))}
               </tbody>

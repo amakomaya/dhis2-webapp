@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LocalSupport;
+use App\Models\Subscriber;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Crypt;
@@ -105,30 +106,37 @@ class LocalSupportController extends Controller
         }
     }
 
+    // public function show()
+    // {
+    //     // $data = LocalSupport::all();
+    //     // return response()->json($data);
+    //     $data = LocalSupport::withTrashed()
+    //     ->select(
+    //         'local_supports.*', 
+    //         'provinces.province_name as province_name', 
+    //         'districts.district_name as district_name', 
+    //         'municipalities.municipality_name as municipality_name'
+    //     )
+    //     ->leftJoin('provinces', 'local_supports.province_id', '=', 'provinces.id')
+    //     ->leftJoin('districts', 'local_supports.district_id', '=', 'districts.id')
+    //     ->leftJoin('municipalities', 'local_supports.municipality_id', '=', 'municipalities.id')
+    //     ->whereNull('local_supports.deleted_at')
+    //     ->get()
+    //     ->map(function($item) {
+    //         $item->token = Crypt::encrypt($item->id);
+    //         return $item;
+    //     });
+    
+    //     return response()->json($data);
+    
+    // }
+
     public function show()
     {
-        // $data = LocalSupport::all();
-        // return response()->json($data);
-        $data = LocalSupport::withTrashed()
-        ->select(
-            'local_supports.*', 
-            'provinces.province_name as province_name', 
-            'districts.district_name as district_name', 
-            'municipalities.municipality_name as municipality_name'
-        )
-        ->leftJoin('provinces', 'local_supports.province_id', '=', 'provinces.id')
-        ->leftJoin('districts', 'local_supports.district_id', '=', 'districts.id')
-        ->leftJoin('municipalities', 'local_supports.municipality_id', '=', 'municipalities.id')
-        ->whereNull('local_supports.deleted_at')
-        ->get()
-        ->map(function($item) {
-            $item->token = Crypt::encrypt($item->id);
-            return $item;
-        });
-    
+        $data = Subscriber::all();
         return response()->json($data);
-    
     }
+
 
     public function delete($id)
     {
